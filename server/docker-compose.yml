@@ -1,0 +1,29 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  node-server:
+    # ตั้งชื่อ container (เหมือน --name)
+    container_name: node-server
+    build: . # ตำแหน่ง dockerfile
+    restart: always
+    ports:
+      - "8000:8000" # map port ออกมา เหมือน -p ใน docker run 
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fluk123
+      MONGO_INITDB_ROOT_PASSWORD: fluk123
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: fluk123
+      ME_CONFIG_MONGODB_ADMINPASSWORD: fluk123
+      ME_CONFIG_MONGODB_URL: mongodb+srv://fluk123:fluk123@cluster0.tdfudre.mongodb.net/
