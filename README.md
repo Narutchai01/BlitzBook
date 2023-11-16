@@ -17,7 +17,7 @@ step 2
 `npm i`
 step 3
 `dcoker-compose up -d`
-
+----
 #how to run server with mySQL
 
 step 1
