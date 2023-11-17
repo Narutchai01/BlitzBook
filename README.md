@@ -1,3 +1,4 @@
+
 #how to run client
 ----
 step 1
@@ -16,6 +17,8 @@ step 1
 step 2
 `npm i`
 step 3
+`tsc`
+step 4
 `dcoker-compose up -d`
 ----
 #how to run server with mySQL
@@ -25,4 +28,6 @@ step 1
 step 2
 `npm i`
 step 3
+`tsc`
+step 4
 `dcoker-compose up -d`
