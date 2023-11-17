@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
 import { client, connectDB } from '../server';
+const jwt = require('jsonwebtoken')
+import { secret } from '../server';
+
+
 export const login = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body
@@ -12,6 +16,8 @@ export const login = async (req: Request, res: Response) => {
         if (!passMatch) {
             return res.status(400).json({ message: 'Invalid email or password' })
         }
+        const token = jwt.sign({data:result}, secret, { expiresIn: '1h' })
+        res.cookie('token', token, { httpOnly: true })
         res.status(200).json(result)
         await client.close()
     } catch (error) {

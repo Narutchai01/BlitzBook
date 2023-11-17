@@ -1,8 +1,6 @@
 import { Response,Request } from "express";
 import { client, connectDB } from "../server";
 
-
-
 export const postbook = async (req:Request,res:Response)=>{
     try {
         const {name,price,category} = req.body
