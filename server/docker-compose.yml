@@ -6,6 +6,7 @@ services:
   node-server:
     # ตั้งชื่อ container (เหมือน --name)
     container_name: node-server
+    command: node --watch ./dist/server
     build: . # ตำแหน่ง dockerfile
     restart: always
     ports:
