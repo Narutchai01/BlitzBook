@@ -13,7 +13,7 @@ export const login = async (req: Request, res: Response) => {
             return res.status(400).json({ message: 'Invalid email or password' })
         }
         res.status(200).json(result)
-        client.close()
+        await client.close()
     } catch (error) {
         console.log(error);
     }

@@ -1,7 +1,7 @@
 import express from 'express'
 const app = express()
 const port = 8000
-import { MongoClient, ObjectId } from 'mongodb'
+import { MongoClient} from 'mongodb'
 import { login } from './controller/LoginController'
 import { signup } from './controller/SignUpController'
 
