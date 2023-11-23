@@ -1,3 +1,5 @@
+//import zone
+
 import express from 'express'
 const app = express()
 const port = 8000
@@ -6,6 +8,9 @@ import { login } from './controller/LoginController'
 import { signup } from './controller/SignUpController'
 import { postbook } from './controller/PostBookcontroller'
 
+
+
+//define zone
 const uri = 'mongodb+srv://fluk123:fluk123@cluster0.tdfudre.mongodb.net/'
 app.use(express.json())
 export const client = new MongoClient(uri)
