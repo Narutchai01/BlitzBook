@@ -12,6 +12,7 @@ import { signup } from './controller/SignUpController'
 //define zone
 const uri = 'mongodb+srv://fluk123:fluk123@cluster0.tdfudre.mongodb.net/'
 app.use(express.json())
+export const seceret = 'HS256'
 
 export const client = new MongoClient(uri)
 

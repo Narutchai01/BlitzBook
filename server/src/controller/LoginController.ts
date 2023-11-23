@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { client, connectDB } from '../server';
+import { seceret } from '../server';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -17,6 +18,8 @@ export const login = async (req: Request, res: Response) => {
         if (!passMatch) {
             return res.status(400).json({ message: 'Invalid email or password' })
         }
+        const token = jwt.sign({result},seceret,{expiresIn:'1h'})
+        res.cookie('token',token,{httpOnly:true})
         res.status(200).json(result)
         await client.close()
     } catch (error) {
