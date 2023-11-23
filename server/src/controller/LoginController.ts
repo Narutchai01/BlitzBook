@@ -1,5 +1,10 @@
 import { Request, Response } from 'express';
 import { client, connectDB } from '../server';
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+
+
 export const login = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body
@@ -8,7 +13,7 @@ export const login = async (req: Request, res: Response) => {
         if (!result) {
             return res.status(400).json({ message: 'not users' })
         }
-        const passMatch = result.password === password
+        const passMatch = await bcrypt.compare(password, result.password)
         if (!passMatch) {
             return res.status(400).json({ message: 'Invalid email or password' })
         }
