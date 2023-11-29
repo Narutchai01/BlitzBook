@@ -1,33 +1,32 @@
 import { Request, Response } from 'express';
 import { client, connectDB } from '../server';
 import { secret } from '../server';
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 
 export const login = async (req: Request, res: Response) => {
     try {
-        const { email, password } = req.body
-        await connectDB()
-        const result = await client.db('user').collection('user').findOne({ email })
+        const { email, password } = req.body;
+        await connectDB();
+        const result = await client.db('user').collection('user').findOne({ email });
         if (!result) {
-            return res.status(400).json({ message: 'not users' })
+            return res.status(400).json({ message: 'not users' });
         }
-        const passMatch = await bcrypt.compare(password, result.password)
+        const passMatch = await bcrypt.compare(password, result.password);
         if (!passMatch) {
-            return res.status(400).json({ message: 'Invalid email or password' })
+            return res.status(400).json({ message: 'Invalid email or password' });
         }
 
-        const token = jwt.sign({ result }, secret, { expiresIn: '1h' })
+        const token = jwt.sign({ result }, secret, { expiresIn: '1h' });
         console.log('success');
-
-        res.cookie('token', token, { httpOnly: true })
-        res.status(200).json(result)
-        await client.close()
+        
+        res.cookie('token', token, { httpOnly: true });
+        res.status(200).json(result);
+        await client.close();
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'something went wrong' })
+        res.status(500).json({ message: 'something went wrong' });
     }
 
-}
+};
