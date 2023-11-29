@@ -1,19 +1,27 @@
-import { Response,Request } from "express";
-import { client, connectDB } from "../server";
+import { Request, Response } from "express";
+import { upLoade } from "../lib/supabase";
+import { client } from "../server";
 
-export const postbook = async (req:Request,res:Response)=>{
+export const postbook = async (req: Request, res: Response) => {
     try {
-        const {name,price,category} = req.body
-        await connectDB()
-        const createbook = {
-            name,
+        const img_url = await upLoade(req.file?.buffer);
+        const { title, author, price, description } = req.body;
+        await client.connect();
+        const data = {
+            title,
+            author,
             price,
-            category
-        }
-        await client.db('book').collection('book').insertOne(createbook)
-        res.status(201).json(createbook)
-        client.close()
+            description,
+            img_url,
+        };
+        await client.db("Project_G").collection("books").insertOne(data);
+        await client.close();
+        res.status(200).send({
+            status: "success",
+            data: data,
+        });
     } catch (error) {
-        console.log('Error',error);
+        console.log(error);
+        
     }
-}
+};
