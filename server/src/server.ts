@@ -7,6 +7,8 @@ import { postbook } from "./controller/PostBookcontroller";
 import { config } from "./lib/config";
 import bodyparser from "body-parser";
 import multer from "multer";
+import {changePassword} from "./controller/changePasswordController";
+
 
 //define zone
 const port = config.port;
@@ -34,6 +36,7 @@ app.use(multerMid.single("file"));
 app.post("/login", login);
 app.post("/signup", signup);
 app.post("/postbook", postbook);
+app.post("/changepassword", changePassword);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
