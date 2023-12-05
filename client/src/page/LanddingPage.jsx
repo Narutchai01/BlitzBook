@@ -24,7 +24,7 @@ const LanddingPage = () => {
     <>
       <Layout>
         {/* header */}
-        <div className="bg-hero-pattern h-[640px] bg-cover bg-center bg-no-repeat">
+        <div className="bg-hero-pattern bg-fixed h-[640px] bg-cover bg-center bg-no-repeat">
           <div className="OverLay">
             <h1 className="text-6xl font-black text-white font-HomeHeader">
               GET YOUR FAVORITE COMICS

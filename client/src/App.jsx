@@ -6,6 +6,7 @@ import SignUp from "./page/SignUp";
 import LanddingPage from "./page/LanddingPage";
 import Bookpage from "./components/Bookpage";
 import AdminPage from "./page/admin/AdminPage";
+import AccountPage from "./page/AccountPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<LanddingPage/>}/>
         <Route path="/BookPage/:bookID" element={<Bookpage/>} />
         <Route path="/admin" element={<AdminPage/>} />
+        <Route path="/Account/:uid" element={<AccountPage/>} />
       </Routes>
     
     </>

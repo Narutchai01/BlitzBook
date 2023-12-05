@@ -23,10 +23,9 @@ const LoginPage = () => {
         if (res.data.result.role === "admin") {
           navigate("/admin");
         } else {
+          localStorage.setItem("token", res.data.result._id);
           navigate("/");
         }
-        
-      // navigate("/");
       }).catch((err) => {
         console.log(err);
         Swal.fire({

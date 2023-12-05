@@ -11,6 +11,9 @@ import {changePassword} from "./controller/changePasswordController";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import {getalluser} from "./controller/GetalluserController";
+import { searchbook } from "./controller/SearchController";
+import { getDataUserByID } from "./controller/GetdataUserById";
+import { auth } from "./middleware/auth";
 
 //define zone
 const port = config.port;
@@ -49,6 +52,8 @@ app.post("/api/signup", signup);
 app.post("/api/postbook", postbook);
 app.put("/api/changepassword", changePassword);
 app.get("/api/getalluser",getalluser);
+app.get("/api/searchbook",searchbook);
+app.get("/api/getDataUserByID",auth,getDataUserByID);
 
 
 app.listen(port, () => {
