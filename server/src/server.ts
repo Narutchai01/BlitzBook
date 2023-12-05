@@ -10,6 +10,7 @@ import multer from "multer";
 import {changePassword} from "./controller/changePasswordController";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import {getalluser} from "./controller/GetalluserController";
 
 //define zone
 const port = config.port;
@@ -47,6 +48,7 @@ app.post("/api/login", login);
 app.post("/api/signup", signup);
 app.post("/api/postbook", postbook);
 app.put("/api/changepassword", changePassword);
+app.get("/api/getalluser",getalluser);
 
 
 app.listen(port, () => {

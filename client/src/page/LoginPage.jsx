@@ -19,8 +19,14 @@ const LoginPage = () => {
     try {
       e.preventDefault();
       axiosInstance.post("/api/login", user).then((res) => {
-        console.log(res.data);
-      navigate("/");
+        console.log(res.data.result.role);
+        if (res.data.result.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+        
+      // navigate("/");
       }).catch((err) => {
         console.log(err);
         Swal.fire({
@@ -31,11 +37,7 @@ const LoginPage = () => {
       });
     } catch (error) {
       console.log(error);
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Password not match!",
-      });
+  
     }
   };
 
