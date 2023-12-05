@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import {client} from "../server";
-import { matchPassword ,hashPassword} from "../lib/ManagementPassWord";
+import { hashPassword, matchPassword} from "../lib/ManagementPassWord";
 import { ObjectId } from "mongodb";
 
 

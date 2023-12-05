@@ -3,6 +3,7 @@ export interface IConfig {
     mongoURI: string;
     supabaseURL: string;
     supabaseKey: string;
+    origin: string;
 }
 
 export interface supabaseInterface{

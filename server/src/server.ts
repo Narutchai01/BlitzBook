@@ -8,7 +8,8 @@ import { config } from "./lib/config";
 import bodyparser from "body-parser";
 import multer from "multer";
 import {changePassword} from "./controller/changePasswordController";
-
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
 //define zone
 const port = config.port;
@@ -16,6 +17,15 @@ const uri = config.mongoURI;
 const app = express();
 app.use(express.json());
 app.use(bodyparser.json());
+app.use(cookieParser());
+app.use(cors(
+  {
+    origin:'http://localhost:5173' || config.origin,
+    credentials: true
+  }
+));
+
+
 export const client = new MongoClient(uri);
 export const secret = "HS256";
 export const connectDB = async () => {
@@ -30,13 +40,13 @@ const multerMid = multer({
   storage: multer.memoryStorage(),
 });
 
-app.use(multerMid.single("file"));
+app.use(multerMid.array("file"));
 
 //rounter
-app.post("/login", login);
-app.post("/signup", signup);
-app.post("/postbook", postbook);
-app.post("/changepassword", changePassword);
+app.post("/api/login", login);
+app.post("/api/signup", signup);
+app.post("/api/postbook", postbook);
+app.put("/api/changepassword", changePassword);
 
 
 app.listen(port, () => {

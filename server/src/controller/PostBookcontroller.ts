@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { upLoade } from "../lib/supabase";
+import { upLoadeIMG,upLoadePDF } from "../lib/supabase";
 import { client } from "../server";
 
 export const postbook = async (req: Request, res: Response) => {
     try {
-        const img_url = await upLoade(req.file?.buffer);
+        const img_url = await upLoadeIMG(req.file?.buffer);
+        const pdf_url = await upLoadePDF(req.file?.buffer);
         const { title, author, price, description } = req.body;
         await client.connect();
         const data = {
@@ -13,6 +14,7 @@ export const postbook = async (req: Request, res: Response) => {
             price,
             description,
             img_url,
+            pdf_url,
         };
         await client.db("Project_G").collection("books").insertOne(data);
         await client.close();

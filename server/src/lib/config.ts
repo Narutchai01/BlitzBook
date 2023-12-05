@@ -5,7 +5,8 @@ dotenv.config();
 
 export const config:IConfig = {
     port: process.env.PORT || 3000,
-    mongoURI: process.env.MONGO_URI || '',
-    supabaseKey: process.env.SUPABASE_KEY || '',
-    supabaseURL: process.env.SUPABASE_URL || ''
+    mongoURI: String(process.env.MONGO_URI),
+    supabaseKey:String(process.env.SUPABASE_KEY) ,
+    supabaseURL:String(process.env.SUPABASE_URL) , 
+    origin: String(process.env.ORIGIN),
 };

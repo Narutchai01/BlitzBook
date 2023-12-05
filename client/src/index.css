@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+  font-family: "Kids Magazine";
+  src: local("Kids Magazine"),
+    url("./assets/font/KidsMagazine/KidsMagazine.ttf") format("truetype");
+  font-weight: regular;
+}
+
+@font-face {
+  font-family: "Impact Regular";
+  src: local("Impact Regular"),
+    url("./assets/font/impact/IMPACT.TFF") format("truetype");
+  font-weight: bold;
+}
