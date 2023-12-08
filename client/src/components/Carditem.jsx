@@ -7,7 +7,7 @@ const Carditem = ({ data }) => {
       {data?.map((item) => {
         return (
           <div key={item.id} className="card-item">
-            <Link to={`/Bookpage/${item.id}`}>
+            <Link to={`/book/${item.id}`}>
               <img src={item.thumbnailUrl} alt="" />
               <h1>{item.title}</h1>
             </Link>

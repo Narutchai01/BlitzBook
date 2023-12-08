@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+// import Layout from "../components/Layout";
 import Carditem from "../components/Carditem";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -22,7 +22,7 @@ const LanddingPage = () => {
 
   return (
     <>
-      <Layout>
+      {/* <Layout> */}
         {/* header */}
         <div className="bg-hero-pattern bg-fixed h-[640px] bg-cover bg-center bg-no-repeat">
           <div className="OverLay">
@@ -60,7 +60,7 @@ const LanddingPage = () => {
             </div>
           </div>
         </div>
-      </Layout>
+      {/* </Layout> */}
     </>
   );
 };

@@ -1,15 +1,21 @@
 import { FaUserLarge } from "react-icons/fa6";
 import { BsBasket3Fill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { DataContext } from "../App";
+
 
 const Nav = () => {
-  const [Token, setToken] = useState(false);
-    const token = localStorage.getItem("token");
+
+  const {userInfo} = useContext(DataContext);
+  const token = userInfo?.loginState || false;
+
+
+
   const haveToken = () => {
     return (
       <div className="flex gap-5 h-full items-center">
-        <Link to={`/Account/${token}`}>
+        <Link to={`/Account/`}>
           <div className="flex flex-col items-center">
             <FaUserLarge />
             <p>Account</p>
@@ -40,17 +46,6 @@ const Nav = () => {
     );
   };
 
-  const handelToken = () => {
-    if (token) {
-      setToken(true);
-    } else {
-      setToken(false);
-    }
-  };
-
-  useEffect(() => {
-    handelToken();
-  }, [Token]);
 
   return (
     <>
@@ -58,7 +53,9 @@ const Nav = () => {
         <div className="h-full container mx-auto px-56">
           <div className="flex justify-between h-full items-center">
             <div>
-              <Link to="/"><h1 className="text-4xl font-bold font-fontNav">BlitzBook</h1></Link>
+              <Link to="/">
+                <h1 className="text-4xl font-bold font-fontNav">BlitzBook</h1>
+              </Link>
             </div>
             <div>
               <input
@@ -67,7 +64,7 @@ const Nav = () => {
                 placeholder="search...."
               />
             </div>
-            {Token ? haveToken() : noToken()}
+            {token ? haveToken() : noToken()}
           </div>
         </div>
       </nav>

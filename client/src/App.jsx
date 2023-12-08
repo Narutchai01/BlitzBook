@@ -7,19 +7,54 @@ import LanddingPage from "./page/LanddingPage";
 import Bookpage from "./components/Bookpage";
 import AdminPage from "./page/admin/AdminPage";
 import AccountPage from "./page/AccountPage";
+import Layout from "./components/Layout";
+import { createContext,useEffect,useState } from "react";
+import { axiosInstance } from "./lib/axios";
+
+
+export const DataContext = createContext();
+
 
 function App() {
+
+  const [userInfo , setUserInfo] = useState({
+    id : "",
+    username : "",
+    email : "",
+    loginState : false,
+    role : "",
+  })
+
+
+  useEffect(() => {
+    axiosInstance.get("/api/checkToken").then((res) => {
+    // console.log(res);
+    setUserInfo({
+      id : res.data.token.id,
+      username : res.data.token.username,
+      email : res.data.token.email,
+      loginState : true,
+      role : res.data.token.role,
+    })
+    }).catch((err) => {
+      console.log(err)
+    })
+  }, [userInfo])
+
   return (
     <>
-      <Routes>
-        <Route path="/login" element={<LoginPage/>} />
-        <Route path="/signup" element={<SignUp/>} />
-        <Route path="/" element={<LanddingPage/>}/>
-        <Route path="/BookPage/:bookID" element={<Bookpage/>} />
-        <Route path="/admin" element={<AdminPage/>} />
-        <Route path="/Account/:uid" element={<AccountPage/>} />
-      </Routes>
-    
+      <DataContext.Provider value={{userInfo , setUserInfo}}>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<LanddingPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/book/:id" element={<Bookpage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/Account/" element={<AccountPage />} />
+          </Routes>
+        </Layout>
+      </DataContext.Provider>
     </>
   );
 }

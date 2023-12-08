@@ -1,29 +1,18 @@
-import { useParams } from "react-router-dom";
-import Layout from "../components/Layout";
-import { useEffect, useState } from "react";
-import { axiosInstance } from "../lib/axios";
+import { useContext } from "react";
+import { DataContext } from "../App";
+
 
 const AccountPage = () => {
-  const { uid } = useParams();
-  const [user, setUser] = useState({});
 
-  useEffect(() => {
-    axiosInstance
-      .get(`/api/getDataUserByID?id=${uid}`)
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [uid]);
+  const {userInfo} = useContext(DataContext);
 
-  console.log(user);
+
+
+  console.log(userInfo);
+
   return (
     <>
-    <Layout>
-      <h1>Account Page {uid}</h1>
-    </Layout>
+        <h1>{userInfo.id}</h1>
     </>
   );
 };
