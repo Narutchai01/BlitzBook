@@ -12,6 +12,7 @@ import { createContext, useEffect, useState } from "react";
 import { axiosInstance } from "./lib/axios";
 import PostbookPage from "./page/admin/PostbookPage";
 import ManagementUser from "./page/admin/ManagementUser";
+import ManagementBooks from "./page/admin/ManagementBooks";
 
 export const DataContext = createContext();
 
@@ -55,6 +56,7 @@ function App() {
             <Route path="/admin/dashboard" element={<AdminPage />} />
             <Route path="/admin/postbook" element={<PostbookPage />} />
             <Route path="/admin/managementUsers" element={<ManagementUser />} />
+            <Route path="/admin/managementBooks" element={<ManagementBooks />} />
           </Routes>
         </Layout>
       </DataContext.Provider>

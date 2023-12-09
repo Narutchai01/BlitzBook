@@ -9,7 +9,7 @@ const SideBarAdmin = () => {
             <Link to="/admin/dashboard">DashBoard</Link>
           </li>
           <li>
-            <Link >managementBooks</Link>
+            <Link to="/admin/managementBooks">managementBooks</Link>
           </li>
           <li>
             <Link to="/admin/postbook">PostBooks</Link>
