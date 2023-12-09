@@ -1,8 +1,9 @@
-import {client , connectDB} from "../server";
+import {client , connectDB} from "../../server";
 import { Request,Response } from "express";
 
 export const getalluser = async (req: Request, res: Response) => {
     try {
+        // await client.connect();
         await connectDB();
         const db = client.db("user");
         const collection = db.collection("user");

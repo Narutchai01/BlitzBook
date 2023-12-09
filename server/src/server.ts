@@ -3,16 +3,16 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import { login } from "./controller/LoginController";
 import { signup } from "./controller/SignUpController";
-import { postbook } from "./controller/PostBookcontroller";
+import { postbook } from "./controller/admin/PostBookcontroller";
 import { config } from "./lib/config";
 // import bodyparser from "body-parser";
 import multer from "multer";
 import { changePassword } from "./controller/changePasswordController";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { getalluser } from "./controller/GetalluserController";
+import { getalluser } from "./controller/admin/GetalluserController";
 import { searchbook } from "./controller/SearchController";
-import { getDataUserByID } from "./controller/GetdataUserById";
+import { getDataUserByID } from "./controller/admin/GetdataUserById";
 import { checkToken } from "./controller/CheckTokenController";
 
 //define zone

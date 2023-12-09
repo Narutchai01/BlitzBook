@@ -1,5 +1,5 @@
 import { Request,Response } from "express";
-import { client , connectDB } from "../server";
+import { client , connectDB } from "../../server";
 import { ObjectId } from "mongodb";
 
 

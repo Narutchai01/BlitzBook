@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { upLoadeIMG, upLoadePDF } from "../lib/supabase";
-import { client } from "../server";
+import { upLoadeIMG, upLoadePDF } from "../../lib/supabase";
+import { client } from "../../server";
 
 export const postbook = async (req: Request, res: Response) => {
   try {
