@@ -8,50 +8,51 @@ import Bookpage from "./components/Bookpage";
 import AdminPage from "./page/admin/AdminPage";
 import AccountPage from "./page/AccountPage";
 import Layout from "./components/Layout";
-import { createContext,useEffect,useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { axiosInstance } from "./lib/axios";
-
+import PostbookPage from "./page/admin/PostbookPage";
 
 export const DataContext = createContext();
 
-
 function App() {
-
-  const [userInfo , setUserInfo] = useState({
-    id : "",
-    username : "",
-    email : "",
-    loginState : false,
-    role : "",
-  })
-
+  const [userInfo, setUserInfo] = useState({
+    id: "",
+    username: "",
+    email: "",
+    loginState: false,
+    role: "",
+  });
 
   useEffect(() => {
-    axiosInstance.get("/api/checkToken").then((res) => {
-    // console.log(res);
-    setUserInfo({
-      id : res.data.token.id,
-      username : res.data.token.username,
-      email : res.data.token.email,
-      loginState : true,
-      role : res.data.token.role,
-    })
-    }).catch((err) => {
-      console.log(err)
-    })
-  }, [userInfo])
+    axiosInstance
+      .get("/api/checkToken")
+      .then((res) => {
+        // console.log(res);
+        setUserInfo({
+          id: res.data.token.id,
+          username: res.data.token.username,
+          email: res.data.token.email,
+          loginState: true,
+          role: res.data.token.role,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userInfo]);
 
   return (
     <>
-      <DataContext.Provider value={{userInfo , setUserInfo}}>
+      <DataContext.Provider value={{ userInfo, setUserInfo }}>
         <Layout>
           <Routes>
             <Route path="/" element={<LanddingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/book/:id" element={<Bookpage />} />
-            <Route path="/admin" element={<AdminPage />} />
             <Route path="/Account/" element={<AccountPage />} />
+              <Route path="/admin/dashboard" element={<AdminPage />} />
+              <Route path="/admin/postbook" element={<PostbookPage />} />
           </Routes>
         </Layout>
       </DataContext.Provider>

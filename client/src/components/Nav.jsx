@@ -4,23 +4,30 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../App";
 
-
 const Nav = () => {
-
-  const {userInfo} = useContext(DataContext);
+  const { userInfo } = useContext(DataContext);
   const token = userInfo?.loginState || false;
-
-
+  const role = userInfo?.role || "";
 
   const haveToken = () => {
     return (
       <div className="flex gap-5 h-full items-center">
-        <Link to={`/Account/`}>
-          <div className="flex flex-col items-center">
-            <FaUserLarge />
-            <p>Account</p>
-          </div>
-        </Link>
+        {role === "admin" ? (
+          <Link to="/admin/dashboard">
+            <div className="flex flex-col items-center">
+              <FaUserLarge />
+              <p>Admin</p>
+            </div>
+          </Link>
+        ) : (
+          <Link to="/Account">
+            <div className="flex flex-col items-center">
+              <FaUserLarge />
+              <p>Account</p>
+            </div>
+          </Link>
+        )}
+        <div className="bg-white w-[2px] h-12"></div>
         <div className="flex flex-col items-center">
           <BsBasket3Fill />
           <p>Cart</p>
@@ -37,6 +44,7 @@ const Nav = () => {
             <p>Login</p>
           </div>
         </Link>
+        <div className="bg-white w-[2px] h-12"></div>
         <Link to="/signup">
           <div className="flex flex-col items-center">
             <p>Signup</p>
@@ -45,7 +53,6 @@ const Nav = () => {
       </div>
     );
   };
-
 
   return (
     <>

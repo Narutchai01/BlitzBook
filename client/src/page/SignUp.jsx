@@ -1,5 +1,5 @@
 import { axiosInstance } from "../lib/axios";
-import Layout from "../components/Layout";
+// import Layout from "../components/Layout";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -80,7 +80,7 @@ const SignUp = () => {
   console.log(user);
   return (
     <>
-      <Layout>
+      {/* <Layout> */}
         <div className="grid grid-cols-2 h-auto">
           <div className="bg-blue-600">
             <h1>fasdasd</h1>
@@ -133,7 +133,7 @@ const SignUp = () => {
             </form>
           </div>
         </div>
-      </Layout>
+      {/* </Layout> */}
     </>
   );
 };
