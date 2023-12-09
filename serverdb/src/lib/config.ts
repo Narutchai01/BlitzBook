@@ -1,7 +1,8 @@
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import { IConfig } from '../interface/interface';
 
 dotenv.config();
+
 
 export const config:IConfig  = {
     port : Number(process.env.PORT) || 3000,
