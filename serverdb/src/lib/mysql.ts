@@ -8,19 +8,18 @@ const params = {
     host: config.RDS_HOSTNAME,
     user: config.RDS_USERNAME,
     password: config.RDS_PASSWORD,
-    database: config.RDS_DB_NAME,
     port: config.RDS_PORT,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
 };
 
-const Connect = () => new Promise<mysql.Connection>((resolve) => {
+const Connect = () => new Promise<mysql.Connection>((resolve,reject) => {
     const connectDB = mysql.createConnection(params);
 
     connectDB.connect((err) => {
         if (err) {
-            throw new Error(`Connection error: ${err.message}`);
+            reject(err);
         }
         resolve(connectDB);
     });

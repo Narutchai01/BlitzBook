@@ -1,4 +1,3 @@
-import { Connection } from 'mysql2/typings/mysql/lib/Connection';
 import { Connect , Query } from '../lib/mysql';
 import { Request , Response } from 'express';
 
