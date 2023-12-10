@@ -3,6 +3,7 @@ import { BsBasket3Fill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../App";
+import { axiosInstance } from "../lib/axios";
 
 const Nav = () => {
   const { userInfo } = useContext(DataContext);
@@ -11,28 +12,63 @@ const Nav = () => {
 
   const haveToken = () => {
     return (
-      <div className="flex gap-5 h-full items-center">
+      <>
         {role === "admin" ? (
-          <Link to="/admin/dashboard">
-            <div className="flex flex-col items-center">
-              <FaUserLarge />
-              <p>Admin</p>
-            </div>
-          </Link>
+          <div className="flex gap-5 h-full items-center">
+            <Link to="/admin/dashboard" className="icon">
+              <div className="flex flex-col items-center">
+                <FaUserLarge />
+                <p>Admin</p>
+              </div>
+              <div className="dropdown">
+                <ul>
+                  <li>
+                    <button
+                      onClick={() =>
+                        axiosInstance.get("/api/logout").then(() => {
+                          window.location.reload();
+                        })
+                      }
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </Link>
+          </div>
         ) : (
-          <Link to="/Account">
+          <div className="flex gap-5 h-full items-center">
+            <Link to="/Account" className="icon">
+              <div className="flex flex-col items-center">
+                <FaUserLarge />
+                <p>Account</p>
+              </div>
+              <div className="dropdown">
+                <ul>
+                  <li>
+                    <button
+                      onClick={(event) =>
+                        axiosInstance.get("/api/logout").then(() => {
+                          event.stopPropagation();
+                          window.location.reload();
+                        })
+                      }
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </Link>
+            <div className="bg-white w-[2px] h-12"></div>
             <div className="flex flex-col items-center">
-              <FaUserLarge />
-              <p>Account</p>
+              <BsBasket3Fill />
+              <p>Cart</p>
             </div>
-          </Link>
+          </div>
         )}
-        <div className="bg-white w-[2px] h-12"></div>
-        <div className="flex flex-col items-center">
-          <BsBasket3Fill />
-          <p>Cart</p>
-        </div>
-      </div>
+      </>
     );
   };
 

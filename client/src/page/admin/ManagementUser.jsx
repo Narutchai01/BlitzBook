@@ -18,14 +18,14 @@ const ManagementUser = () => {
     getUser();
   },[]);
 
-  console.log(dataUser);
 
   return (
     <>
       <div className="flex w-screen h-screen">
         <SideBarAdmin />
-        <div className="bg-blue-600 w-screen">
-          <div>
+        <div className="w-screen p-10">
+          <h1 className="font-bold text-4xl my-10">Management User</h1>
+          <div className="flex gap-10">
             <CardUser dataUser={dataUser} />
           </div>
         </div>

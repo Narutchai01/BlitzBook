@@ -16,6 +16,5 @@ export const changePasswordByAdmin = async (req: Request, res: Response) => {
         res.status(201).json(result);
     } catch (error) {
         console.log("Error",error);
-        
     }
 };

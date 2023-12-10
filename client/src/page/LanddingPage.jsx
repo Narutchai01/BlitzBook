@@ -32,7 +32,11 @@ const LanddingPage = () => {
           </div>
         </div>
         {/*---------------------------------------*/}
-
+        <div>
+          <div>
+            <img src="" alt="" />
+          </div>
+        </div>
         {/* body */}
         <div className="my-10 container mx-auto px-10">
           {/* best sale */}
@@ -47,7 +51,7 @@ const LanddingPage = () => {
           <div className="">
             <h1 className="text-3xl">New release</h1>
             <div className="grid grid-cols-5 gap-10">
-              <Carditem data={data?.slice(0,5)}/>
+              {/* <Carditem data={data?.slice(0,5)}/> */}
             </div>
           </div>
         </div>
@@ -56,7 +60,7 @@ const LanddingPage = () => {
           <div className="">
             <h1 className="text-3xl">New release</h1>
             <div className="grid grid-cols-5 gap-10">
-              <Carditem data={data?.slice(0,5)}/>
+              {/* <Carditem data={data?.slice(0,5)}/> */}
             </div>
           </div>
         </div>

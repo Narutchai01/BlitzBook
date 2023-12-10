@@ -13,6 +13,7 @@ import { axiosInstance } from "./lib/axios";
 import PostbookPage from "./page/admin/PostbookPage";
 import ManagementUser from "./page/admin/ManagementUser";
 import ManagementBooks from "./page/admin/ManagementBooks";
+import ManageMentAuthor from "./page/admin/ManageMentAuthor";
 
 export const DataContext = createContext();
 
@@ -57,6 +58,7 @@ function App() {
             <Route path="/admin/postbook" element={<PostbookPage />} />
             <Route path="/admin/managementUsers" element={<ManagementUser />} />
             <Route path="/admin/managementBooks" element={<ManagementBooks />} />
+            <Route path="/admin/managementAuthors" element={<ManageMentAuthor />} />
           </Routes>
         </Layout>
       </DataContext.Provider>

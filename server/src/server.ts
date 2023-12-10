@@ -5,7 +5,7 @@ import { login } from "./controller/LoginController";
 import { signup } from "./controller/SignUpController";
 import { postbook } from "./controller/admin/PostBookcontroller";
 import { config } from "./lib/config";
-// import bodyparser from "body-parser";
+import bodyparser from "body-parser";
 import multer from "multer";
 import { changePassword } from "./controller/changePasswordController";
 import cors from "cors";
@@ -14,12 +14,16 @@ import { getalluser } from "./controller/admin/GetalluserController";
 import { searchbook } from "./controller/SearchController";
 import { getDataUserByID } from "./controller/admin/GetdataUserById";
 import { checkToken } from "./controller/CheckTokenController";
+import { getallBooks } from "./controller/admin/GetAllBooks";
+import { deleteBookByID } from "./controller/admin/DeletBookByID";
+import { deleteUserByID } from "./controller/admin/DeleteUserById";
+import { logout } from "./controller/logoutController";
 
 //define zone
 const port = config.port;
 const uri = config.mongoURI;
 const app = express();
-// app.use(bodyparser.json());
+app.use(bodyparser.json());
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -39,11 +43,7 @@ export const connectDB = async () => {
     console.log("Error", e);
   }
 };
-// const multerMid = multer({
-//   storage: multer.memoryStorage(),
-// });
 
-// createa multer mutiple file
 const multerMid = multer({
   storage: multer.memoryStorage(),
 });
@@ -59,6 +59,10 @@ app.get("/api/getalluser", getalluser);
 app.get("/api/searchbook", searchbook);
 app.get("/api/getDataUserByID", getDataUserByID);
 app.get("/api/checkToken", checkToken);
+app.get("/api/getallbooks", getallBooks);
+app.delete("/api/deletebook/:id", deleteBookByID);
+app.delete("/api/deleteuser/:id", deleteUserByID);
+app.get("/api/logout",logout);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

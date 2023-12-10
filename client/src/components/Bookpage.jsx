@@ -1,32 +1,15 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
-// import Layout from "./Layout";
+import {useParams} from 'react-router-dom';
 
 const Bookpage = () => {
-  const [book, setBook] = useState([]);
-  const [title , setTitle] = useState('');
-  const { bookID } = useParams();
 
-
-  useEffect(() => {
-    document.title = title;
-    return () => {
-      document.title = "Book";
-    };
-  }, [title]);
-
-
-  useEffect(() => {
-    
-  }, [bookID]);
-
-
+  const {id} = useParams();
 
 
   return (
     <>
-      
+      <h1>
+        Bookpage {id}
+      </h1>
     </>
   );
 };

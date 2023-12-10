@@ -1,9 +1,10 @@
 import SideBarAdmin from "./components/SideBarAdmin";
 import { useState } from "react";
 import { axiosInstance } from "../../lib/axios";
+import Swal from "sweetalert2";
 
 const PostbookPage = () => {
-const [image , setImage] = useState(null)
+  const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
   const [dataBook, setDataBook] = useState({
     nameBook: "",
@@ -37,10 +38,16 @@ const [image , setImage] = useState(null)
     formData.append("description", dataBook.description);
     formData.append("file", file);
     formData.append("file", image);
-    
+
     axiosInstance
       .post("/api/postbook", formData)
       .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Your book has been posted",
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
         console.log(res);
       })
       .catch((err) => console.log(err));
@@ -50,9 +57,10 @@ const [image , setImage] = useState(null)
     <>
       <div className="flex w-screen h-screen">
         <SideBarAdmin />
-        <div className="bg-blue-600 w-screen">
-          <form>
-            <div>
+        <div className="w-screen flex justify-center h-screen items-center">
+          <form className="flex gap-10 flex-col">
+            <div className="form-input-book">
+              <label>Title Book</label>
               <input
                 type="text"
                 name="nameBook"
@@ -60,7 +68,8 @@ const [image , setImage] = useState(null)
                 placeholder="nameBook"
               />
             </div>
-            <div>
+            <div className="form-input-book">
+              <label>Title Book</label>
               <input
                 type="number"
                 name="price"
@@ -68,7 +77,8 @@ const [image , setImage] = useState(null)
                 placeholder="price"
               />
             </div>
-            <div>
+            <div className="form-input-book">
+              <label>Title Book</label>
               <input
                 type="text"
                 name="author"
@@ -76,7 +86,8 @@ const [image , setImage] = useState(null)
                 placeholder="author"
               />
             </div>
-            <div>
+            <div className="form-input-book">
+              <label>Title Book</label>
               <input
                 type="text"
                 name="category"
@@ -84,7 +95,8 @@ const [image , setImage] = useState(null)
                 placeholder="category"
               />
             </div>
-            <div>
+            <div className="form-input-book">
+              <label>Title Book</label>
               <input
                 type="text"
                 name="description"
@@ -92,11 +104,22 @@ const [image , setImage] = useState(null)
                 placeholder="description"
               />
             </div>
-            <div>
-              <input type="file" name="file" onChange={handleFile} />
-              <input type="file" name="image" onChange={handleFile} />
+            <div className="flex flex-col gap-7">
+              <div className="form-input-book">
+                <label>File</label>
+                <input type="file" name="file" onChange={handleFile} />
+              </div>
+              <div className="form-input-book">
+                <label>Image</label>
+                <input type="file" name="image" onChange={handleFile} />
+              </div>
             </div>
-            <button onClick={handleSubmit}>submit</button>
+            <button
+              className="py-5 mx-20 rounded-xl text-3xl bg-red-600"
+              onClick={handleSubmit}
+            >
+              submit
+            </button>
           </form>
         </div>
       </div>
