@@ -4,7 +4,6 @@ import { IConfig } from '../interface/interface';
 dotenv.config();
 
 
-
 export const config:IConfig  = {
     port : Number(process.env.PORT) || 3000,
     RDS_HOSTNAME : process.env.RDS_HOSTNAME || 'localhost',
