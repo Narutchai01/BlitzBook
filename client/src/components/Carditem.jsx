@@ -6,9 +6,9 @@ const Carditem = ({ data }) => {
     <>
       {data?.map((item) => {
         return (
-          <div key={item.id} className="card-item">
-            <Link to={`/book/${item.id}`}>
-              <img src={item.thumbnailUrl} alt="" />
+          <div key={item._id} className="card-item">
+            <Link to={`/book/${item._id}`}>
+              <img src={item.image} alt="" />
               <h1>{item.title}</h1>
             </Link>
           </div>

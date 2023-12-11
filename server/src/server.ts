@@ -22,7 +22,8 @@ import { AaddAuthor } from "./controller/admin/AddAuthor";
 import { AaddPublisher } from "./controller/admin/AddPublisher";
 import { GetWriter } from "./controller/admin/GetWriter";
 import { DeleteWritter } from "./controller/admin/DeleteWritter";
-import { AddCatagory } from "./controller/admin/AddCatagory";
+import {  AddCategory } from "./controller/admin/AddCategory";
+import { getBookByID } from "./controller/GetBookByID";
 
 //define zone
 const port = config.port;
@@ -70,10 +71,10 @@ app.delete("/api/deleteuser/:id", deleteUserByID);
 app.get("/api/logout",logout);
 app.post("/api/addAuthor",AaddAuthor);
 app.post("/api/addPublisher",AaddPublisher);
-app.post("/api/addCatagory",AddCatagory);
+app.post("/api/addCatagory",AddCategory);
 app.get("/api/getWriterBy/:writer",GetWriter);
 app.delete("/api/deleteWriter/:type/:id",DeleteWritter);
-
+app.get("/api/getBookByID/:id",getBookByID);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

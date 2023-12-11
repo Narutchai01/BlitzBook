@@ -79,7 +79,7 @@ const PostbookPage = () => {
     };
     const getCategory = async () => {
       try {
-        await axiosInstance.get("/api/getWriterBy/Catagory").then((res) => {
+        await axiosInstance.get("/api/getWriterBy/Category").then((res) => {
           setDataCategory(res.data.result);
         });
       } catch (error) {
@@ -91,7 +91,7 @@ const PostbookPage = () => {
     getPublisher();
   }, []);
 
-  console.log(dataPublisher);
+  // console.log(dataPublisher);
 
   const selectPublisher = dataPublisher.map((item) => {
     return (
@@ -144,21 +144,21 @@ const PostbookPage = () => {
             <div className="form-input-book">
               <label>Author</label>
               <select name="author" onChange={handleChange}>
-                <option value="">--Select Author--</option>
+                <option >--Select Author--</option>
                 {selectAuthor}
               </select>
             </div>
             <div className="form-input-book">
               <label>Publisher</label>
               <select name="publisher" onChange={handleChange}>
-                <option value="">--Select Publisher--</option>
+                <option >--Select Publisher--</option>
                 {selectPublisher}
               </select>
             </div>
             <div className="form-input-book">
               <label>Category</label>
               <select name="category" onChange={handleChange}>
-                <option value="">--Select Category--</option>
+                <option>--Select Category--</option>
                 {selectCategory}
               </select>
             </div>

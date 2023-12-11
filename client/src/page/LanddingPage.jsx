@@ -1,18 +1,20 @@
 // import Layout from "../components/Layout";
 import Carditem from "../components/Carditem";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import {axiosInstance} from "../lib/axios";
+
 
 const LanddingPage = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
     const fecthData = async () => {
-      await axios
-        .get("https://jsonplaceholder.typicode.com//photos?albumId=1")
-        .then((res) => {
-          setData(res.data);
-        });
+      try {
+        const res = await axiosInstance.get("/api/getallbooks");
+        setData(res.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
     fecthData();
   }, []);

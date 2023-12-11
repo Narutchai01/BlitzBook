@@ -5,13 +5,17 @@ import CardWritter from "./components/CardWritter";
 
 const ManageMentAuthor = () => {
   const [dataAuthor, setDataAuthor] = useState({
-    nameAuthor: "",
+    name: "",
   });
   const [dataPublisher, setDataPublisher] = useState({
-    namePublisher: "",
+    name: "",
+  });
+  const [dataCategory, setDataCategory] = useState({
+    name: "",
   });
   const [Author, setAuthor] = useState([]);
   const [Publisher, setPublisher] = useState([]);
+  const [Category, setCategory] = useState([]);
 
   const handleChangeAuthor = (e) => {
     setDataAuthor({
@@ -22,6 +26,13 @@ const ManageMentAuthor = () => {
   const handleChangePublisher = (e) => {
     setDataPublisher({
       ...dataPublisher,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChangeCategory = (e) => {
+    setDataCategory({
+      ...dataCategory,
       [e.target.name]: e.target.value,
     });
   };
@@ -37,6 +48,12 @@ const ManageMentAuthor = () => {
     });
   };
 
+  const addCategory = async () => {
+    axiosInstance.post("/api/addCatagory", dataCategory).then((res) => {
+      console.log(res.data);
+    });
+  };
+
   useEffect(() => {
     const getAuthor = async () => {
       const res = await axiosInstance.get("/api/getWriterBy/Author");
@@ -46,8 +63,13 @@ const ManageMentAuthor = () => {
       const res = await axiosInstance.get("/api/getWriterBy/Publisher");
       setPublisher(res.data.result);
     };
+    const getCategory = async () => {
+      const res = await axiosInstance.get("/api/getWriterBy/Category");
+      setCategory(res.data.result);
+    };
     getAuthor();
     getPublisher();
+    getCategory();
   }, []);
 
   console.log(Author);
@@ -88,6 +110,20 @@ const ManageMentAuthor = () => {
                 </div>
                 <button type="submit">add Publisher</button>
               </form>
+              <form onSubmit={addCategory}>
+                <div>
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    addd Category
+                  </label>
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    name="name"
+                    onChange={handleChangeCategory}
+                  />
+                </div>
+                <button type="submit">add Category</button>
+              </form>
             </div>
             <div>
               <div className="">
@@ -102,6 +138,12 @@ const ManageMentAuthor = () => {
                 <h1>Publisher</h1>
                 <div className="grid grid-cols-5 gap-5 w-full">
                   <CardWritter data={Publisher} type={"Publisher"} />
+                </div>
+              </div>
+              <div>
+                <h1>Category</h1>
+                <div className="grid grid-cols-5 gap-5 w-full">
+                  <CardWritter data={Category} type={"Category"} />
                 </div>
               </div>
             </div>

@@ -20,7 +20,7 @@ const CardBook = ({ databook }) => {
             <img src={book.image} alt="" />
           </div>
           <p>{book.title}</p>
-          <p>{book.author}</p>
+          {/* <p>{book.author}</p> */}
           <p>{book.price}</p>
           {/* <p>{book.description}</p> */}
           <p>{book.category}</p>

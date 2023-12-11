@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { upLoadeIMG, upLoadePDF } from "../../lib/supabase";
 import { client } from "../../server";
+import { ObjectId } from "mongodb";
 
 export const postbook = async (req: Request, res: Response) => {
   try {
@@ -18,12 +19,16 @@ export const postbook = async (req: Request, res: Response) => {
       })
     );
 
-    const { title, author, price, description , publisher } = req.body;
+    const { title, author, price, description , publisher ,category  } = req.body;
     await client.connect();
+
+
+    
     const data = {
       title,
-      author,
-      publisher,
+      author : new ObjectId(author),
+      publisher : new ObjectId(publisher) ,
+      category : new ObjectId(category),
       price,
       description,
       image: url[0],

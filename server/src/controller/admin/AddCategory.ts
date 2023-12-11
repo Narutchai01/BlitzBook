@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { client, connectDB } from "../../server";
 
-export const AddCatagory = async (req: Request, res: Response) => {
+export const AddCategory = async (req: Request, res: Response) => {
   try {
     const { name } = req.body;
     await connectDB();
@@ -19,7 +19,7 @@ export const AddCatagory = async (req: Request, res: Response) => {
     }
     const result = await client
       .db("Project_G")
-      .collection("Catagory")
+      .collection("Category")
       .insertOne({ name });
     res.status(200).send({ result });
   } catch (error) {

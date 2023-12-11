@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { client, connectDB } from "../../server";
+import { client, connectDB } from "../server";
 
-export const getallBooks = async (req: Request, res: Response) => {
+export const getBookByID = async (req: Request, res: Response) => {
   try {
+    const { id } = req.params;
     await connectDB();
-    const result = await client
+    const matching = await client
       .db("Project_G")
       .collection("books")
       .aggregate([
@@ -32,9 +33,11 @@ export const getallBooks = async (req: Request, res: Response) => {
             as: "categoryDetails",
           },
         },
-      ])
-      .toArray();
-    res.status(200).send(result);
+      ]);
+    const result = await matching.toArray();
+    const book = await result.find((book) => book._id.toString() === id);
+    await client.close();
+    res.status(200).send(book);
   } catch (error) {
     console.log(error);
   }
