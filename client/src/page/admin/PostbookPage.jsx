@@ -8,10 +8,12 @@ const PostbookPage = () => {
   const [file, setFile] = useState(null);
   const [dataAuthor, setDataAuthor] = useState([]);
   const [dataPublisher, setDataPublisher] = useState([]);
+  const [dataCategory, setDataCategory] = useState([]);
   const [dataBook, setDataBook] = useState({
     nameBook: "",
     price: 0,
     author: "",
+    publisher: "",
     category: "",
     description: "",
   });
@@ -37,6 +39,7 @@ const PostbookPage = () => {
     formData.append("price", dataBook.price);
     formData.append("author", dataBook.author);
     formData.append("category", dataBook.category);
+    formData.append("publisher", dataBook.publisher);
     formData.append("description", dataBook.description);
     formData.append("file", file);
     formData.append("file", image);
@@ -56,23 +59,63 @@ const PostbookPage = () => {
   };
 
   useEffect(() => {
-    const getAuthor = async () => {
+    const getPublisher = async () => {
       try {
-        const res = await axiosInstance.get("/api/getWriter/Author");
-        setDataAuthor(res.data);
+        await axiosInstance.get("/api/getWriterBy/Publisher").then((res) => {
+          setDataPublisher(res.data.result);
+        });
       } catch (error) {
         console.log(error);
       }
     };
-    const getPublisher = async () => {
+    const getAuthor = async () => {
       try {
-        const res = await axiosInstance.get("/api/getWriter/Publisher");
-        setDataPublisher(res.data);
-      } catch (error) {console.log(error);}
+        await axiosInstance.get("/api/getWriterBy/Author").then((res) => {
+          setDataAuthor(res.data.result);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     };
-    getPublisher();
+    const getCategory = async () => {
+      try {
+        await axiosInstance.get("/api/getWriterBy/Catagory").then((res) => {
+          setDataCategory(res.data.result);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCategory();
     getAuthor();
+    getPublisher();
   }, []);
+
+  console.log(dataPublisher);
+
+  const selectPublisher = dataPublisher.map((item) => {
+    return (
+      <option value={item._id} key={item._id}>
+        {item.name}
+      </option>
+    );
+  });
+
+  const selectAuthor = dataAuthor.map((item) => {
+    return (
+      <option value={item._id} key={item._id}>
+        {item.name}
+      </option>
+    );
+  });
+
+  const selectCategory = dataCategory.map((item) => {
+    return (
+      <option value={item._id} key={item._id}>
+        {item.name}
+      </option>
+    );
+  });
 
   return (
     <>
@@ -100,21 +143,24 @@ const PostbookPage = () => {
             </div>
             <div className="form-input-book">
               <label>Author</label>
-              <input
-                type="text"
-                name="author"
-                onChange={handleChange}
-                placeholder="author"
-              />
+              <select name="author" onChange={handleChange}>
+                <option value="">--Select Author--</option>
+                {selectAuthor}
+              </select>
             </div>
             <div className="form-input-book">
-              <label>Title Book</label>
-              <input
-                type="text"
-                name="category"
-                onChange={handleChange}
-                placeholder="category"
-              />
+              <label>Publisher</label>
+              <select name="publisher" onChange={handleChange}>
+                <option value="">--Select Publisher--</option>
+                {selectPublisher}
+              </select>
+            </div>
+            <div className="form-input-book">
+              <label>Category</label>
+              <select name="category" onChange={handleChange}>
+                <option value="">--Select Category--</option>
+                {selectCategory}
+              </select>
             </div>
             <div className="form-input-book">
               <label>Title Book</label>

@@ -18,11 +18,12 @@ export const postbook = async (req: Request, res: Response) => {
       })
     );
 
-    const { title, author, price, description } = req.body;
+    const { title, author, price, description , publisher } = req.body;
     await client.connect();
     const data = {
       title,
       author,
+      publisher,
       price,
       description,
       image: url[0],
