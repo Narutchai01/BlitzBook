@@ -1,11 +1,13 @@
 import SideBarAdmin from "./components/SideBarAdmin";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { axiosInstance } from "../../lib/axios";
 import Swal from "sweetalert2";
 
 const PostbookPage = () => {
   const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
+  const [dataAuthor, setDataAuthor] = useState([]);
+  const [dataPublisher, setDataPublisher] = useState([]);
   const [dataBook, setDataBook] = useState({
     nameBook: "",
     price: 0,
@@ -53,11 +55,30 @@ const PostbookPage = () => {
       .catch((err) => console.log(err));
   };
 
+  useEffect(() => {
+    const getAuthor = async () => {
+      try {
+        const res = await axiosInstance.get("/api/getWriter/Author");
+        setDataAuthor(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const getPublisher = async () => {
+      try {
+        const res = await axiosInstance.get("/api/getWriter/Publisher");
+        setDataPublisher(res.data);
+      } catch (error) {console.log(error);}
+    };
+    getPublisher();
+    getAuthor();
+  }, []);
+
   return (
     <>
-      <div className="flex w-screen h-screen">
+      <div className="flex w-screen h-auto">
         <SideBarAdmin />
-        <div className="w-screen flex justify-center h-screen items-center">
+        <div className="w-screen flex justify-center items-center">
           <form className="flex gap-10 flex-col">
             <div className="form-input-book">
               <label>Title Book</label>
@@ -78,7 +99,7 @@ const PostbookPage = () => {
               />
             </div>
             <div className="form-input-book">
-              <label>Title Book</label>
+              <label>Author</label>
               <input
                 type="text"
                 name="author"

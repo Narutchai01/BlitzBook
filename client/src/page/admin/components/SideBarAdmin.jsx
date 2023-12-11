@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SideBarAdmin = () => {
   return (
     <>
-      <div className="bg-[#C63535] w-1/4 h-full">
+      <div className="bg-[#C63535] w-1/4 h-auto">
         <ul className="text-3xl gap-8 flex flex-col">
           <li>
             <Link to="/admin/dashboard">DashBoard</Link>

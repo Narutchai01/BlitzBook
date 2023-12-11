@@ -18,6 +18,10 @@ import { getallBooks } from "./controller/admin/GetAllBooks";
 import { deleteBookByID } from "./controller/admin/DeletBookByID";
 import { deleteUserByID } from "./controller/admin/DeleteUserById";
 import { logout } from "./controller/logoutController";
+import { AaddAuthor } from "./controller/admin/AddAuthor";
+import { AaddPublisher } from "./controller/admin/AddPublisher";
+import { GetWriter } from "./controller/admin/GetWriter";
+import { DeleteWritter } from "./controller/admin/DeleteWritter";
 
 //define zone
 const port = config.port;
@@ -63,6 +67,10 @@ app.get("/api/getallbooks", getallBooks);
 app.delete("/api/deletebook/:id", deleteBookByID);
 app.delete("/api/deleteuser/:id", deleteUserByID);
 app.get("/api/logout",logout);
+app.post("/api/addAuthor",AaddAuthor);
+app.post("/api/addPublisher",AaddPublisher);
+app.get("/api/getWriterBy/:writer",GetWriter);
+app.delete("/api/deleteWriter/:type/:id",DeleteWritter);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

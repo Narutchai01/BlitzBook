@@ -27,6 +27,7 @@ export const postbook = async (req: Request, res: Response) => {
       description,
       image: url[0],
       pdf: url[1],
+      date : new Date()
     };
     await client.db("Project_G").collection("books").insertOne(data);
     await client.close();
