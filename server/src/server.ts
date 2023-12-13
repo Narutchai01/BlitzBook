@@ -26,6 +26,8 @@ import {  AddCategory } from "./controller/admin/AddCategory";
 import { getBookByID } from "./controller/GetBookByID";
 import { AddtoCart } from "./controller/admin/AddtoCart";
 import { getBookinCart } from "./controller/GetBookinCart";
+import { getNewReleases } from "./controller/NewReleasesController";
+import { DeleteBookinCart } from "./controller/DeleteBookinCart";
 
 //define zone
 const port = config.port;
@@ -70,6 +72,9 @@ app.get("/api/logout",logout);
 app.get("/api/getBookByID/:id",getBookByID);
 app.post("/api/addToCart",AddtoCart);
 app.get("/api/getBookinCart",getBookinCart);
+app.get("/api/getNewReleases",getNewReleases);
+app.delete("/api/deleteBookinCart",DeleteBookinCart);
+
 
 //admin router
 app.delete("/api/deleteWriter/:type/:id",DeleteWritter);

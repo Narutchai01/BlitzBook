@@ -11,9 +11,10 @@ const CartPage = () => {
     const fecthData = async () => {
       try {
         const res = await axiosInstance.get(
-          `http://localhost:8000/api/getBookinCart?userID=${userInfo.id}`
+          `/api/getBookinCart?userID=${userInfo.id}`
         );
-        setData(res.data.result);
+        setData(res.data.matching);
+        // console.log(data);
       } catch (err) {
         console.log(err);
       }
@@ -23,19 +24,30 @@ const CartPage = () => {
 
   console.log(data);
 
-  const showData = data?.map((item) => {
-    return (
-      <div key={item._id}>
-        <h1>{item.title}</h1>
-        <h1>{item.price}</h1>
-      </div>
-    );
-  });
+  const showData = () => {
+    if (data) {
+      return data.map((item) => {
+        return item.bookInfo?.map((book) => {
+          return (
+            <div key={book._id} className="card-item">
+              <img src={book.image} alt="" />
+              <h1>{book.name}</h1>
+              <h1>{book.price}</h1>
+              <button onClick={
+                () => 
+                axiosInstance.delete(`/api/deleteBookinCart?id=${item._id}`)
+              }>remove</button>
+            </div>
+          );
+        });
+      });
+    }
+  };
 
   return (
     <>
       <h1>CART PAGE</h1>
-      {showData}
+      {showData()}
     </>
   );
 };

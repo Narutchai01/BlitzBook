@@ -15,6 +15,7 @@ import ManagementUser from "./page/admin/ManagementUser";
 import ManagementBooks from "./page/admin/ManagementBooks";
 import ManageMentAuthor from "./page/admin/ManageMentAuthor";
 import CartPage from "./page/CartPage";
+import BooksCollection from "./page/BooksCollection";
 
 export const DataContext = createContext();
 
@@ -61,6 +62,7 @@ function App() {
             <Route path="/admin/managementBooks" element={<ManagementBooks />} />
             <Route path="/Cart" element={<CartPage/>} />
             <Route path="/admin/managementAuthors" element={<ManageMentAuthor />} />
+            <Route path="/BooksCollection" element={<BooksCollection/>} />
           </Routes>
         </Layout>
       </DataContext.Provider>

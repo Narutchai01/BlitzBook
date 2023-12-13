@@ -10,7 +10,7 @@ const LanddingPage = () => {
   useEffect(() => {
     const fecthData = async () => {
       try {
-        const res = await axiosInstance.get("/api/getallbooks");
+        const res = await axiosInstance.get("/api/getNewReleases");
         setData(res.data);
       } catch (err) {
         console.log(err);
