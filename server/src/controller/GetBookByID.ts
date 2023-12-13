@@ -36,7 +36,6 @@ export const getBookByID = async (req: Request, res: Response) => {
       ]);
     const result = await matching.toArray();
     const book = await result.find((book) => book._id.toString() === id);
-    await client.close();
     res.status(200).send(book);
   } catch (error) {
     console.log(error);

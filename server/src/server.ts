@@ -24,6 +24,8 @@ import { GetWriter } from "./controller/admin/GetWriter";
 import { DeleteWritter } from "./controller/admin/DeleteWritter";
 import {  AddCategory } from "./controller/admin/AddCategory";
 import { getBookByID } from "./controller/GetBookByID";
+import { AddtoCart } from "./controller/admin/AddtoCart";
+import { getBookinCart } from "./controller/GetBookinCart";
 
 //define zone
 const port = config.port;
@@ -57,24 +59,30 @@ const multerMid = multer({
 app.use(multerMid.array("file"));
 
 //rounter
-app.post("/api/login", login);
-app.post("/api/signup", signup);
-app.post("/api/postbook", postbook);
-app.put("/api/changepassword", changePassword);
-app.get("/api/getalluser", getalluser);
-app.get("/api/searchbook", searchbook);
-app.get("/api/getDataUserByID", getDataUserByID);
 app.get("/api/checkToken", checkToken);
 app.get("/api/getallbooks", getallBooks);
+// user router
+app.post("/api/login", login);
+app.post("/api/signup", signup);
+app.put("/api/changepassword", changePassword);
+app.get("/api/searchbook", searchbook);
+app.get("/api/logout",logout);
+app.get("/api/getBookByID/:id",getBookByID);
+app.post("/api/addToCart",AddtoCart);
+app.get("/api/getBookinCart",getBookinCart);
+
+//admin router
+app.delete("/api/deleteWriter/:type/:id",DeleteWritter);
+app.get("/api/getWriterBy/:writer",GetWriter);
 app.delete("/api/deletebook/:id", deleteBookByID);
 app.delete("/api/deleteuser/:id", deleteUserByID);
-app.get("/api/logout",logout);
+app.get("/api/getalluser", getalluser);
+app.post("/api/postbook", postbook);
 app.post("/api/addAuthor",AaddAuthor);
 app.post("/api/addPublisher",AaddPublisher);
 app.post("/api/addCatagory",AddCategory);
-app.get("/api/getWriterBy/:writer",GetWriter);
-app.delete("/api/deleteWriter/:type/:id",DeleteWritter);
-app.get("/api/getBookByID/:id",getBookByID);
+app.get("/api/getDataUserByID", getDataUserByID);
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

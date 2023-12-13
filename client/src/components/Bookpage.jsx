@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useContext } from "react";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
+import { DataContext } from "../App";
 
 const Bookpage = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
+
+  const { userInfo } = useContext(DataContext);
 
   useEffect(() => {
     try {
@@ -21,7 +24,16 @@ const Bookpage = () => {
 
   const authorName = data.authorObj?.map((item) => item.name);
 
-  console.log(data);
+const addtocart = () => {
+  try {
+    axiosInstance.post(`/api/addToCart?userID=${userInfo.id}&bookID=${id}`).then((res) => {
+      console.log(res.data);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
   return (
     <>
@@ -35,6 +47,7 @@ const Bookpage = () => {
             <h1>{authorName}</h1>
             <p>{data.description}</p>
           </div>
+          <button onClick={addtocart}>add to cart</button>
         </div>
       </div>
     </>

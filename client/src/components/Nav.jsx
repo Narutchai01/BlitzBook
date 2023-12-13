@@ -62,10 +62,12 @@ const Nav = () => {
               </div>
             </Link>
             <div className="bg-white w-[2px] h-12"></div>
-            <div className="flex flex-col items-center">
-              <BsBasket3Fill />
-              <p>Cart</p>
-            </div>
+            <Link to="/Cart">
+              <div className="flex flex-col items-center">
+                <BsBasket3Fill />
+                <p>Cart</p>
+              </div>
+            </Link>
           </div>
         )}
       </>

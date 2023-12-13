@@ -24,7 +24,6 @@ const LanddingPage = () => {
 
   return (
     <>
-      {/* <Layout> */}
         {/* header */}
         <div className="bg-hero-pattern bg-fixed h-[640px] bg-cover bg-center bg-no-repeat">
           <div className="OverLay">
@@ -45,7 +44,6 @@ const LanddingPage = () => {
           <div className="">
             <h1 className="text-3xl">Best saler</h1>
             <div className="grid grid-cols-5 gap-10">
-              <Carditem data={data?.slice(0,5)}/>
             </div>
           </div>
 
@@ -53,7 +51,7 @@ const LanddingPage = () => {
           <div className="">
             <h1 className="text-3xl">New release</h1>
             <div className="grid grid-cols-5 gap-10">
-              {/* <Carditem data={data?.slice(0,5)}/> */}
+              <Carditem data={data?.slice(0,5)}/>
             </div>
           </div>
         </div>
@@ -66,7 +64,6 @@ const LanddingPage = () => {
             </div>
           </div>
         </div>
-      {/* </Layout> */}
     </>
   );
 };

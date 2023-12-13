@@ -13,7 +13,7 @@ export const getallBooks = async (req: Request, res: Response) => {
             from: "Author",
             localField: "author",
             foreignField: "_id",
-            as: "authorObj",
+            as: "authorObj"
           },
         },
         {
