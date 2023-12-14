@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
         <div className="bg-secondary mb-5 w-full h-[36px] flex justify-center items-center">
           <p className="text-center text-lg font-medium">
-           CoppyRight ©2023 BlitzBook. All Rights Reserved.
+            CoppyRight ©2023 BlitzBook. All Rights Reserved.
           </p>
         </div>
       </footer>

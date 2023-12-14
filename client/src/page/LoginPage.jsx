@@ -47,7 +47,7 @@ const LoginPage = () => {
   return (
     <>
       {/* <Layout> */}
-      <div className="grid grid-cols-2 h-[640px] w-full border-b-4 border-black">
+      <div className="grid md:grid-cols-2 h-[640px] w-full border-b-4 border-black lg: grid-cols-1">
         <div className="flex flex-col justify-center items-center gap-10">
           <h1 className="text-6xl text-primary font-bold">Welcome Back</h1>
           <div className="shape-login-from">
@@ -91,7 +91,7 @@ const LoginPage = () => {
             </form>
           </div>
         </div>
-        <div className="overlay bg-hero-pattern bg-left-top bg-cover">
+        <div className="bg-hero-pattern bg-left-top bg-cover">
           <div className="overlay">
             <div className="flex flex-col justify-center items-center text-white h-full gap-10">
                 <h1 className="text-5xl font-bold">New Here ?</h1>
