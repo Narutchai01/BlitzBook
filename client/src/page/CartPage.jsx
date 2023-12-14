@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { DataContext } from "../App";
 import { axiosInstance } from "../lib/axios";
+import { BsBookmark } from "react-icons/bs";
 
 const CartPage = () => {
   const { userInfo } = useContext(DataContext);
-
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
+  const [bookIDs, setBookIDs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +53,24 @@ const CartPage = () => {
     return totalPrice;
   };
 
+  
+let bookid = []
+data?.map((item)=>bookid.push(item.bookID))
+
+  const checkout =  async () => {
+    const data = {
+      userID: userInfo.id,
+      bookID : bookid,
+      totalAmout : calculateTotalPrice()
+    };
+    await axiosInstance.post("/api/checkout",data).then(()=>{
+      
+    })
+    console.log(data);
+  };
+
+
+
 
 
   return (
@@ -59,6 +78,7 @@ const CartPage = () => {
       <h1>CART PAGE</h1>
       {showData}
       {calculateTotalPrice()}
+      <button onClick={checkout}>Checkout</button>
     </>
   );
 };

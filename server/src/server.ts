@@ -28,6 +28,7 @@ import { AddtoCart } from "./controller/admin/AddtoCart";
 import { getBookinCart } from "./controller/GetBookinCart";
 import { getNewReleases } from "./controller/NewReleasesController";
 import { DeleteBookinCart } from "./controller/DeleteBookinCart";
+import { CheckoutController } from "./controller/CheckOutController";
 
 //define zone
 const port = config.port;
@@ -74,6 +75,7 @@ app.post("/api/addToCart",AddtoCart);
 app.get("/api/getBookinCart",getBookinCart);
 app.get("/api/getNewReleases",getNewReleases);
 app.delete("/api/deleteBookinCart",DeleteBookinCart);
+app.post("/api/checkout",CheckoutController);
 
 
 //admin router
