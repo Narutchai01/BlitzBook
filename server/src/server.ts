@@ -7,12 +7,11 @@ import { postbook } from "./controller/admin/PostBookcontroller";
 import { config } from "./lib/config";
 import bodyparser from "body-parser";
 import multer from "multer";
-import { changePassword } from "./controller/changePasswordController";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { getalluser } from "./controller/admin/GetalluserController";
 import { searchbook } from "./controller/SearchController";
-import { getDataUserByID } from "./controller/admin/GetdataUserById";
+import { getDataUserByID } from "./controller/GetdataUserById";
 import { checkToken } from "./controller/CheckTokenController";
 import { getallBooks } from "./controller/admin/GetAllBooks";
 import { deleteBookByID } from "./controller/admin/DeletBookByID";
@@ -29,6 +28,7 @@ import { getBookinCart } from "./controller/GetBookinCart";
 import { getNewReleases } from "./controller/NewReleasesController";
 import { DeleteBookinCart,DeleteBookinCartForCheckout } from "./controller/DeleteBookinCart";
 import { CheckoutController } from "./controller/CheckOutController";
+import { changePassword } from "./controller/changePasswordController";
 
 //define zone
 const port = config.port;
@@ -77,6 +77,7 @@ app.get("/api/getNewReleases",getNewReleases);
 app.delete("/api/deleteBookinCart",DeleteBookinCart);
 app.post("/api/checkout",CheckoutController);
 app.delete("/api/deleteBookinCartForCheckout",DeleteBookinCartForCheckout);
+app.get("/api/getDataUserByID/:id", getDataUserByID);
 
 
 //admin router
@@ -89,7 +90,6 @@ app.post("/api/postbook", postbook);
 app.post("/api/addAuthor",AaddAuthor);
 app.post("/api/addPublisher",AaddPublisher);
 app.post("/api/addCatagory",AddCategory);
-app.get("/api/getDataUserByID", getDataUserByID);
 
 
 

@@ -6,10 +6,13 @@ import { hashPassword } from '../lib/ManagementPassWord';
 
 export const signup = async (req: Request, res: Response) => {
     try {
-        const { username, password, email ,role} = req.body;
+        const { username, password, email ,role ,date , fname , lname } = req.body;
         await connectDB();
         const createuser = {
+            fname,
+            lname,
             username ,
+            date,
             password: await hashPassword(password),
             email,
             role : role || "user"
