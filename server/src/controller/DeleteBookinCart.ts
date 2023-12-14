@@ -14,3 +14,15 @@ try {
     
 }
 };
+
+
+export const DeleteBookinCartForCheckout = async (req:Request,res:Response) => {
+    try {
+        const {id} = req.query;
+        const result = await client.db("Project_G").collection("Cart").deleteMany({userID: new ObjectId(id as string)});
+        res.status(200).send({message:"Delete book in cart",result});
+    } catch (error) {
+     console.log(error);
+        
+    }
+};

@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./page/LoginPage";
 import SignUp from "./page/SignUp";
 import LanddingPage from "./page/LanddingPage";
-import Bookpage from "./components/Bookpage";
+import Bookpage from "./page/Bookpage";
 import AdminPage from "./page/admin/AdminPage";
 import AccountPage from "./page/AccountPage";
 import Layout from "./components/Layout";

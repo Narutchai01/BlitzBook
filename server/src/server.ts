@@ -27,7 +27,7 @@ import { getBookByID } from "./controller/GetBookByID";
 import { AddtoCart } from "./controller/admin/AddtoCart";
 import { getBookinCart } from "./controller/GetBookinCart";
 import { getNewReleases } from "./controller/NewReleasesController";
-import { DeleteBookinCart } from "./controller/DeleteBookinCart";
+import { DeleteBookinCart,DeleteBookinCartForCheckout } from "./controller/DeleteBookinCart";
 import { CheckoutController } from "./controller/CheckOutController";
 
 //define zone
@@ -76,6 +76,7 @@ app.get("/api/getBookinCart",getBookinCart);
 app.get("/api/getNewReleases",getNewReleases);
 app.delete("/api/deleteBookinCart",DeleteBookinCart);
 app.post("/api/checkout",CheckoutController);
+app.delete("/api/deleteBookinCartForCheckout",DeleteBookinCartForCheckout);
 
 
 //admin router
@@ -89,6 +90,8 @@ app.post("/api/addAuthor",AaddAuthor);
 app.post("/api/addPublisher",AaddPublisher);
 app.post("/api/addCatagory",AddCategory);
 app.get("/api/getDataUserByID", getDataUserByID);
+
+
 
 
 app.listen(port, () => {

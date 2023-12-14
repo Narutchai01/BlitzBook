@@ -1,12 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { DataContext } from "../App";
 import { axiosInstance } from "../lib/axios";
-import { BsBookmark } from "react-icons/bs";
 
 const CartPage = () => {
   const { userInfo } = useContext(DataContext);
   const [data, setData] = useState([]);
-  const [bookIDs, setBookIDs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +28,15 @@ const CartPage = () => {
     }
   };
 
-  const showData = data?.map((item) => {
+  const handleDeleteCheckout = async (userID) => {
+    try {
+      await axiosInstance.delete(`/api/deleteBookinCartForCheckout?id=${userID}`)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const renderData = (item) => {
     return item.bookInfo.map((book) => {
       return (
         <div key={book._id} className="card-item">
@@ -41,7 +47,9 @@ const CartPage = () => {
         </div>
       );
     });
-  });
+  };
+
+  const showData = data?.map(renderData);
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
@@ -53,22 +61,21 @@ const CartPage = () => {
     return totalPrice;
   };
 
-  
-let bookid = []
-data?.map((item)=>bookid.push(item.bookID))
+  let bookid = [];
+  data?.map((item) => bookid.push(item.bookID));
 
-  const checkout =  async () => {
+  const checkout = async () => {
     const data = {
       userID: userInfo.id,
-      bookID : bookid,
-      totalAmout : calculateTotalPrice()
+      bookID: bookid,
+      totalAmout: calculateTotalPrice(),
     };
-    await axiosInstance.post("/api/checkout",data).then(()=>{
-      
-    })
-    console.log(data);
+    await axiosInstance.post("/api/checkout", data).then(() => {
+      handleDeleteCheckout(userInfo.id)
+      window.location.reload();
+    });
+    
   };
-
 
 
 
