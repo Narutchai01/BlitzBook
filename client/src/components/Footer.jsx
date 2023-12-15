@@ -4,10 +4,11 @@ import { MdMailOutline, MdOutlinePhone } from "react-icons/md";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { TiSocialTwitter } from "react-icons/ti";
 
+
 const Footer = () => {
   return (
     <>
-      <footer className=" h-[323px]">
+      <footer className="h-[323px]">
         <div className="container mx-auto my-auto py-[159px]">
           <div className="flex justify-between items-center h-full">
             <div className="w-[300px] gap-5 flex flex-col">

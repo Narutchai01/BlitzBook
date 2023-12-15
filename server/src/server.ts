@@ -31,6 +31,7 @@ import { CheckoutController } from "./controller/CheckOutController";
 import { changePassword } from "./controller/changePasswordController";
 import { test } from "./controller/Test";
 import { getBestSaler } from "./controller/BestsalerController";
+import { auth } from "./middleware/auth";
 
 //define zone
 const port = config.port;
@@ -69,14 +70,14 @@ app.get("/api/getallbooks", getallBooks);
 // user router
 app.post("/api/login", login);
 app.post("/api/signup", signup);
-app.put("/api/changepassword", changePassword);
+app.put("/api/changepassword", auth,changePassword);
 app.get("/api/searchbook", searchbook);
 app.get("/api/logout",logout);
 app.get("/api/getBookByID/:id",getBookByID);
-app.post("/api/addToCart",AddtoCart);
+app.post("/api/addToCart",auth,AddtoCart);
 app.get("/api/getBookinCart",getBookinCart);
 app.get("/api/getNewReleases",getNewReleases);
-app.delete("/api/deleteBookinCart",DeleteBookinCart);
+app.delete("/api/deleteBookinCart",auth,DeleteBookinCart);
 app.post("/api/checkout",CheckoutController);
 app.delete("/api/deleteBookinCartForCheckout",DeleteBookinCartForCheckout);
 app.get("/api/getDataUserByID/:id", getDataUserByID);

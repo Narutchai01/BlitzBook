@@ -6,11 +6,17 @@ export default {
   ],
   theme: {
     extend: {
+      lineClamp: {
+        2: '2',
+      },
       colors: {
         primary: '#C63535',
-        secondary: '#F8B32E'
+        secondary: '#F8B32E',
+        bgcolor: '#FFFBF1',
+        third : '#1B2345',
+        yellow: '#F8B32E',
       },
-      backgroundImage:({
+      backgroundImage: ({
         'hero-pattern': "url('/src/assets/images/BgHome.png')",
         'hero-pattern2': "url('/src/assets/images/1330957.jpeg')",
       }),

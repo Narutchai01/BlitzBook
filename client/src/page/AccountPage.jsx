@@ -3,6 +3,7 @@ import { DataContext } from "../App";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../lib/axios";
 import Swal from "sweetalert2";
+import SildeBarUser from "../components/SildeBarUser";
 
 const AccountPage = () => {
   const { userInfo } = useContext(DataContext);
@@ -52,39 +53,13 @@ const AccountPage = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <h1>Account Page</h1>
-            <p>
-              name :{" "}
-              <strong>
-                {user.fname} {user.lname}
-              </strong>
-            </p>
-            <p>
-              <strong>Username:</strong> {user.username}
-            </p>
-            <p>
-              <strong>Email:</strong> {user.email}
-            </p>
+      <div className="grid grid-cols-[360px_4fr] h-screen border-b-2 border-black">
+        <SildeBarUser />
+        <div className="w-full">
+          <div>
+            <h1 className="text-3xl font-semibold">My Profile</h1>
           </div>
         </div>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="password"
-            placeholder="pass"
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="newpassword"
-            placeholder="newpass"
-            onChange={handleChange}
-          />
-          <button type="submit">Submit</button>
-        </form>
       </div>
     </>
   );

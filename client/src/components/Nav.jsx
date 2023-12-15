@@ -1,5 +1,5 @@
 import { FaUserLarge } from "react-icons/fa6";
-import { BsBasket3Fill } from "react-icons/bs";
+import { MdShoppingCart  } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../App";
@@ -66,9 +66,9 @@ const Nav = () => {
               </div>
             </Link>
             <div className="bg-white w-[2px] h-12"></div>
-            <Link to="/Cart">
+            <Link to="/Cart" onClick={()=> window.scrollTo(0.0)}>
               <div className="flex flex-col items-center">
-                <BsBasket3Fill />
+                <MdShoppingCart />
                 <p>Cart</p>
               </div>
             </Link>
@@ -100,7 +100,7 @@ const Nav = () => {
     <>
       <div className="sticky top-0 z-50">
         <nav className="bg-[#C63535] h-20 text-white items-center">
-          <div className="h-full container mx-auto px-56">
+          <div className="h-full container mx-auto px-48">
             <div className="flex justify-between h-full items-center">
               <div>
                 <Link to="/">

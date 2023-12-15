@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { upLoadeIMG, upLoadePDF } from "../../lib/supabase";
 import { client } from "../../server";
 import { ObjectId } from "mongodb";
+import { upLoadeIMG, upLoadePDF } from "../../lib/supabase";
 
 export const postbook = async (req: Request, res: Response) => {
   try {
@@ -19,24 +19,37 @@ export const postbook = async (req: Request, res: Response) => {
       })
     );
 
-    const { title, author, price, description , publisher ,category  } = req.body;
+    const { title, author, price, description, publisher, category } = req.body;
     await client.connect();
 
+    const image = Promise.all(url?.map((item: any) => {
+      if (item && item.match(/\.jpg$/) && item !== undefined && item !== null) {
+        return item;
+      }
+    }));
+    const pdf = Promise.all(url?.map((item: any) => {
+      if (item && item.match(/\.pdf$/) && item !== undefined && item !== null) {
+        return item;
+      }
+      else {
+        return false;
+      }
+    }));
 
-    
+    const pdfResult = await pdf;
+    const imageData = await image;
+
     const data = {
       title,
-      author : new ObjectId(author),
-      publisher : new ObjectId(publisher) ,
-      category : new ObjectId(category),
+      author: new ObjectId(author),
+      publisher: new ObjectId(publisher),
+      category: new ObjectId(category),
       price,
       description,
-      image: url[0],
-      pdf: url[1],
+      image: imageData[1],
+      pdf: pdfResult[0],
       sales: 0,
-      date : new Date()
-
-
+      date: new Date(),
     };
     await client.db("Project_G").collection("books").insertOne(data);
     await client.close();
