@@ -32,6 +32,7 @@ import { changePassword } from "./controller/changePasswordController";
 import { test } from "./controller/Test";
 import { getBestSaler } from "./controller/BestsalerController";
 import { auth } from "./middleware/auth";
+import { MyPurchaseController } from "./controller/MyPurchaseController";
 
 //define zone
 const port = config.port;
@@ -82,6 +83,7 @@ app.post("/api/checkout",CheckoutController);
 app.delete("/api/deleteBookinCartForCheckout",DeleteBookinCartForCheckout);
 app.get("/api/getDataUserByID/:id", getDataUserByID);
 app.get("/api/getBestSaler", getBestSaler);
+app.get("/api/MyPurchase",MyPurchaseController);
 
 
 //admin router

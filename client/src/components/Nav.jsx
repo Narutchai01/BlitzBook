@@ -137,7 +137,7 @@ const Nav = () => {
                 <a href="#">Publisher</a>
               </li>
               <li>
-                <Link to="/BooksCollection">BooksCollection</Link>
+                <Link to="/Account/BooksCollection">BooksCollection</Link>
               </li>
             </ul>
           </div>

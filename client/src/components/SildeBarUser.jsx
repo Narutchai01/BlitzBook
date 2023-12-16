@@ -17,10 +17,10 @@ const SildeBarUser = () => {
             <Link to="/account">My Profile</Link>
           </li>
           <li>
-            <Link to="/account/changepassword">Change Password</Link>
+            <Link to="/Account/changepassword">Change Password</Link>
           </li>
         </ul>
-        <Link to="/account/address" className="flex items-center text-2xl text-start w-full px-16 gap-2">
+        <Link to="/Account/MyPurchase" className="flex items-center text-2xl text-start w-full px-16 gap-2">
           <BiPurchaseTagAlt className="text-yellow" />
           <h1>My Purchase</h1>
         </Link>

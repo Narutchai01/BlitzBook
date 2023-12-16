@@ -5,11 +5,15 @@ import { ObjectId } from "mongodb";
 export const CheckoutController = async (req: Request, res: Response) => {
   try {
     const { userID, bookID, totalAmout } = req.body;
+
+      const book = Promise.all(bookID?.map(async (item: any) => {
+        return new ObjectId(item);
+      }));
     const transactionData = {
       userID,
-      bookID,
+      bookID: await book,
       totalAmout,
-      data: new Date(),
+      date: new Date(),
     };
     await connectDB();
     bookID?.map(async (item: any) => {

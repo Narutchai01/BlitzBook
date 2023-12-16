@@ -16,6 +16,8 @@ import ManagementBooks from "./page/admin/ManagementBooks";
 import ManageMentAuthor from "./page/admin/ManageMentAuthor";
 import CartPage from "./page/CartPage";
 import BooksCollection from "./page/BooksCollection";
+import ChangePassword from "./page/ChangePassword";
+import MyPurchasePage from "./page/MyPurchasePage";
 
 export const DataContext = createContext();
 
@@ -62,7 +64,9 @@ function App() {
             <Route path="/admin/managementBooks" element={<ManagementBooks />} />
             <Route path="/Cart" element={<CartPage/>} />
             <Route path="/admin/managementAuthors" element={<ManageMentAuthor />} />
-            <Route path="/BooksCollection" element={<BooksCollection/>} />
+            <Route path="/Account/BooksCollection" element={<BooksCollection/>} />
+            <Route path="/Account/changepassword" element={<ChangePassword />} />
+            <Route path="/Account/MyPurchase" element={<MyPurchasePage />} />
           </Routes>
         </Layout>
       </DataContext.Provider>
