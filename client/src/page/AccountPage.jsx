@@ -58,6 +58,26 @@ const AccountPage = () => {
         <div className="w-full">
           <div>
             <h1 className="text-3xl font-semibold">My Profile</h1>
+            <div className="w-full grid grid-cols-3">
+              <div>
+                <h1>username</h1>
+                <h1>{user.username}</h1>
+              </div>
+              <div>
+                <h1>Name</h1>
+                <h1>
+                  {user.fname} {user.lname}
+                </h1>
+              </div>
+              <div>
+                <h1>email</h1>
+                <h1>{user.email}</h1>
+              </div>
+              <div>
+                <h1>Date of birth</h1>
+                <h1>{user.date}</h1>
+              </div>
+            </div>
           </div>
         </div>
       </div>
