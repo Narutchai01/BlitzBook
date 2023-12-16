@@ -1,10 +1,10 @@
-import { Connect , Query } from '../lib/mysql';
+import { Connect , Query} from '../lib/mysql';
 import { Request , Response } from 'express';
 
-const getAllComic = (req: Request , res: Response ) => {
+export const getAllComic = async (req: Request , res: Response ) => {
     let query = "SELECT * FROM Comic";
 
-    Connect()
+    await Connect()
     .then(connection => {
         Query(connection , query)
         .then(result => {
@@ -20,4 +20,3 @@ const getAllComic = (req: Request , res: Response ) => {
     })
 }
 
-export default { getAllComic };
