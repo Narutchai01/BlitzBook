@@ -6,7 +6,8 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.cookies.token;
         if (!token) {
-            return res.status(400).json({ message: 'not token' });
+            res.status(401).json({ message: 'No token, authorization denied' });
+            return false; 
         }
         const decoded = jwt.verify(token, secret);
         res.status(200).json({ message: 'have token', decoded});

@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
-import { uuid } from "uuidv4";
 import { config } from "./config";
+import { v4 as uuid } from "uuid";
 
 const supabaseKey = config.supabaseKey;
 const supabaseUrl = config.supabaseURL;

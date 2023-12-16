@@ -1,9 +1,94 @@
+import { Link } from "react-router-dom";
+import { FiMapPin } from "react-icons/fi";
+import { MdMailOutline, MdOutlinePhone } from "react-icons/md";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { TiSocialTwitter } from "react-icons/ti";
+
 
 const Footer = () => {
   return (
     <>
-      <footer className="bg-[#070B1A] h-96 text-white">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus illum delectus officia at, similique laboriosam suscipit pariatur consequatur ullam nemo, voluptatum corporis modi quas ab excepturi ratione maiores ut reiciendis?</p>
+      <footer className="h-[323px]">
+        <div className="container mx-auto my-auto py-[159px]">
+          <div className="flex justify-between items-center h-full">
+            <div className="w-[300px] gap-5 flex flex-col">
+              <h1 className=" text-5xl text-primary font-bold font-fontNav">
+                BlitzBook
+              </h1>
+              <p className="w-full text-lg font-medium">
+                We have the largest and most comprehensive selection of comics
+                and graphic novels from all your favorite publishers in a form
+                of ebook.
+              </p>
+            </div>
+            <div className="w-[234px] flex flex-col ">
+              <h1 className="text-primary text-2xl font-bold">Browse</h1>
+              <div className="flex text-lg gap-1 font-medium w-full">
+                <ul>
+                  <li>
+                    <Link>Home</Link>
+                  </li>
+                  <li>
+                    <Link>New Release</Link>
+                  </li>
+                  <li>
+                    <Link>Best Sellers</Link>
+                  </li>
+                  <li>
+                    <Link>Genera</Link>
+                  </li>
+                  <li>
+                    <Link>Publisher</Link>
+                  </li>
+                </ul>
+                <ul className="">
+                  <li>
+                    <Link>Variants</Link>
+                  </li>
+                  <li>
+                    <Link>Number1s</Link>
+                  </li>
+                  <li>
+                    <Link>One Shot</Link>
+                  </li>
+                  <li>
+                    <Link>Back Issues</Link>
+                  </li>
+                  <li>
+                    <Link>BookCollection</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="w-[172px]">
+              <h1 className="text-primary text-2xl font-bold">Contact</h1>
+              <div className="text-lg">
+                <div className="contact-footer ">
+                  <FiMapPin />
+                  Home
+                </div>
+                <div className="contact-footer">
+                  <MdMailOutline />
+                  fakeservice@mail.com
+                </div>
+                <div className="contact-footer">
+                  <MdOutlinePhone />
+                  1234567890
+                </div>
+                <div className="contact-footer gap-5 text-xl">
+                  <FaFacebook />
+                  <FaInstagram />
+                  <TiSocialTwitter />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-secondary mb-5 w-full h-[36px] flex justify-center items-center">
+          <p className="text-center text-lg font-medium">
+            CoppyRight ©2023 BlitzBook. All Rights Reserved.
+          </p>
+        </div>
       </footer>
     </>
   );
