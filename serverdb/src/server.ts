@@ -1,5 +1,6 @@
 //import zone
 import express from "express";
+import multer from "multer";
 import { config } from "./lib/config";
 import { GetAllBook } from './controller/Admin/GetAllBook'
 import { signup } from "./controller/SignUpController";
@@ -16,22 +17,42 @@ import { GetAllUser } from "./controller/Admin/GetAllUser";
 import { GetAuthor } from "./controller/Admin/GetAuthor";
 import { ChangePasswordByAdmin } from "./controller/Admin/ChangePasswordByAdmin";
 import { AddtoCart } from "./controller/Admin/AddtoCart";
-
-
+import { UpdateBook } from "./controller/Admin/UpdateBookController";
+import { logout } from "./controller/LogoutController";
+import { checkToken } from "./controller/CheckToken";
+import { changePassword } from "./controller/ChangePasswordController";
+import { GetBookByID } from "./controller/GetBookByID";
+import { GetBookInCart } from "./controller/GetBookInCart";
+import { GetDataUserByID } from "./controller/GetDataUserByID";
 
 //define zone
 const PORT = config.port;
 const app = express();
 app.use(express.json());
-export const secret = "HS256";
-//route zone
 
+const multerMid = multer({
+  storage: multer.memoryStorage(),
+});
+
+app.use(multerMid.array("file"));
+
+export const secret = "HS256";
+
+//route zone
+app.get("/api/getallbooks" , GetAllBook)
+app.get("/api/checktoken" , checkToken)
 
 
 //User
 app.post("/api/signup" , signup)
 app.post("/api/login" , login)
+app.post("/api/logout" , logout)
+app.put("/api/changepassword" , changePassword)
 app.get("/api/MyPurchase" , MyPurchase)
+app.get("/api/getdatauserbyid/:id" , GetDataUserByID)
+app.get("/api/getbookbyid/:id" , GetBookByID)
+app.get("/api/getbookincart" , GetBookInCart)
+
 
 //Admin
 app.post("/api/addauthor" , AddAuthor)
@@ -40,16 +61,12 @@ app.post("/api/addpublisher" , AddPublisher)
 app.post("/api/addseries" , AddSeries)
 app.post("/api/addtocart" , AddtoCart)
 app.put("/api/changepasswordbyadmin" , ChangePasswordByAdmin)
-app.get("/api/getallbooks" , GetAllBook)
+app.put("/api/updatebook" , UpdateBook)
 app.get("/api/getalluser" , GetAllUser)
 app.get("/api/getauthor" , GetAuthor)
 app.delete("/api/deleteuserbyid/:id" , DeleteUserByID)
 app.delete("/api/deleteauthor/:id" , DeleteAuthor)
 app.delete("/api/deletebook/:id" , DeleteBookByID)
-
-
-
-
 
 
 

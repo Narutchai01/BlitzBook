@@ -11,7 +11,7 @@ export const AddPublisher = async (req: Request , res: Response ) => {
             return false;
         }
         await client.query(`INSERT INTO Publisher(name) VALUES(?)`, name)
-        return res.status(200).send({
+        return res.status(201).send({
             message: "Add Publisher successed",
         })
     } catch (error) {

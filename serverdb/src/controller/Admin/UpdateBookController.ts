@@ -2,16 +2,16 @@ import { dbConnect } from '../../lib/mysql';
 import { Request , Response } from 'express';
 import { reportError , getErrorMessage } from '../../lib/Error';
 
-export const AddtoCart = async (req: Request , res: Response ) => {
+export const UpdateBook = async (req: Request , res: Response ) => {
     try {
-        const { userID , bookID } = req.query;
+        const { id , title , price } = req.body;
         const client = await dbConnect();
-        await client.query(`INSERT INTO Cart(userID, bookID) VALUES(?,?)`, { userID , bookID } )
+        await client.query(`UPDATE FROM Comic SET title = "?" , price = ? WHERE .id = ?` , { title , price , id});
         return res.status(201).send({
-            message: "Add to cart successed",
+            message: "Update comic successed"    
         })
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        
+    
     } 
 }

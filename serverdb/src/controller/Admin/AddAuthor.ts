@@ -11,7 +11,7 @@ export const AddAuthor = async (req: Request , res: Response ) => {
             return false;
         }
         await client.query(`INSERT INTO Author(name) VALUES(?)`, name)
-        return res.status(200).send({
+        return res.status(201).send({
             message: "Add Author successed",
         })
     } catch (error) {
