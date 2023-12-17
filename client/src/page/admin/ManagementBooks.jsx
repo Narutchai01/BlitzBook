@@ -18,17 +18,15 @@ const ManagementBooks = () => {
     getBooks();
   }, []);
 
-  console.log(databooks);
-
   return (
     <>
-      <div className="flex w-screen h-screen">
+      <div className="flex w-screen h-auto min-h-screen">
         <SideBarAdmin />
         <div className="w-screen">
           <h1 className=" font-bold text-4xl my-10">
             Management Books
           </h1>
-          <div className="h-full flex gap-10 p-10">
+          <div className="h-full grid grid-cols-5  gap-y-10 container">
             <CardBook databook={databooks} />
           </div>
         </div>

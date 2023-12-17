@@ -55,7 +55,6 @@ const Nav = () => {
 
   // console.log(searchBooks(searchResult).map((item)=>item.title));
 
-  console.log(ShowSearch);
 
   const haveToken = () => {
     return (

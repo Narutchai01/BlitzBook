@@ -35,6 +35,7 @@ import { auth } from "./middleware/auth";
 import { MyPurchaseController } from "./controller/MyPurchaseController";
 import { GetMyCollection } from "./controller/GetMyCollection";
 import { AddSeries } from "./controller/admin/AddSeries";
+import { UpdateBook } from "./controller/admin/UpdateBookController";
 
 //define zone
 const port = config.port;
@@ -101,6 +102,7 @@ app.post("/api/addPublisher",AaddPublisher);
 app.post("/api/addCatagory",AddCategory);
 app.post("/api/test",test);
 app.post("/api/addSeries",AddSeries);
+app.put("/api/updatebook/:id", UpdateBook);
 
 
 

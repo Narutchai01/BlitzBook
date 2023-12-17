@@ -92,7 +92,6 @@ const ManageMentAuthor = () => {
     getSeries();
   }, []);
 
-  console.log(Author);
 
   return (
     <>
