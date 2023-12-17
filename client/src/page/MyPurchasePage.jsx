@@ -27,17 +27,15 @@ const MyPurchasePage = () => {
 
   return (
     <>
-      <div className="h-auto border-black border-b-2">
-        <div className="grid grid-cols-[360px_4fr] h-full">
+        <div className="grid md:grid-cols-[360px_1fr] min-h-screen border-b-2 border-black">
           <SildeBarUser />
-          <div className="container mx-auto px-24 mb-10">
+          <div className="container md:mx-auto md:px-24 mb-10">
             <h1 className="text-3xl font-semibold my-10">My Purchase</h1>
             <div className="grid grid-cols-[1fr] gap-8">
               <CardMyPurchase purchase={purchase} />
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

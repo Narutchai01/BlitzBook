@@ -35,7 +35,7 @@ const LanddingPage = () => {
       {/* header */}
       <div className="bg-hero-pattern bg-fixed h-[640px] bg-cover bg-center bg-no-repeat">
         <div className="OverLay">
-          <h1 className="text-6xl font-black text-white font-HomeHeader">
+          <h1 className="md:text-5xl font-HomeHeader text-bold text-white text-lg">
             GET YOUR FAVORITE COMICS
           </h1>
         </div>
@@ -50,10 +50,10 @@ const LanddingPage = () => {
       {/* best sale */}
 
       {/* new release */}
-      <div className="bg-third h-[731px]">
+      <div className="bg-third md:h-[731px] h-auto">
         <div className="h-full flex flex-col justify-center container mx-auto font-semibold">
-          <h1 className="text-3xl text-white">New release</h1>
-          <div className="grid grid-cols-5 gap-10">
+          <h1 className="text-3xl text-white md:justify-start flex justify-center">New release</h1>
+          <div className="grid md:grid-cols-5 gap-10 justify-center">
             <Carditem data={data?.slice(0, 5)} />
           </div>
         </div>
@@ -61,10 +61,10 @@ const LanddingPage = () => {
 
       <div className="my-10 bg-hero-pattern2 bg-cover bg-no-repeat h-[400px]"></div>
 
-      <div className="h-[731px]">
+      <div className="md:h-[731px] h-auto">
         <div className="h-full flex flex-col justify-center container mx-auto font-semibold">
-          <h1 className="text-3xl text-black">Best Saler</h1>
-          <div className="grid grid-cols-5 gap-10">
+          <h1 className="text-3xl text-black md:justify-start flex justify-center">Best Saler</h1>
+          <div className="grid md:grid-cols-5 gap-10 justify-center">
             <Carditem data={dataBestSaler?.slice(0, 5)} />
           </div>
 

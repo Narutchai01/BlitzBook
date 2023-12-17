@@ -144,14 +144,12 @@ const Nav = () => {
   return (
     <>
       <div className="sticky top-0 z-50">
-        <nav className="bg-[#C63535] h-20 text-white items-center">
+        <nav className="bg-[#C63535] md:h-20 text-white items-center ">
           <div className="h-full container mx-auto px-48">
-            <div className="flex justify-between h-full items-center">
-              <div>
+            <div className="flex w-full justify-between md:flex-row items-center h-full flex-col gap-10">
                 <Link to="/">
                   <h1 className="text-4xl font-bold font-fontNav">BlitzBook</h1>
                 </Link>
-              </div>
               <div className="flex flex-col relative">
                 <input
                   type="text"
@@ -165,9 +163,9 @@ const Nav = () => {
             </div>
           </div>
         </nav>
-        <nav className="bg-[#070B1A] h-10 text-white">
-          <div className="h-full container mx-auto px-80">
-            <ul className="flex justify-between h-full items-center">
+        <nav className="bg-[#070B1A] md:h-10 text-white h-auto justify-center">
+          <div className="h-full container mx-auto md:px-80">
+            <ul className="flex md:flex-row flex-col h-full items-center justify-between">
               <li>
                 <Link to="/">Home</Link>
               </li>

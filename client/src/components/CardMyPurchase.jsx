@@ -15,12 +15,12 @@ const CardMyPurchase = ({ purchase }) => {
           >
             <h1 className="font-semibold text-2xl">{date} {time}</h1>
             {book.book?.map((item) => (
-              <div key={item._id} className="flex gap-3">
-                <div>
+              <div key={item._id} className="grid md:grid-cols-[180px_1fr] gap-x-10">
+                <div className="max-[]">
                     <img
                         src={item.image}
                         alt=""
-                        className="w-[100px] h-[150px] object-cover"
+                        className="w-full h-full object-cover"
                     />
                 </div>
                 <div className="flex flex-col gap-5">
