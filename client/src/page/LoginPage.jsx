@@ -49,7 +49,7 @@ const LoginPage = () => {
       {/* <Layout> */}
       <div className="grid md:grid-cols-2 h-[640px] w-full border-b-4 border-black lg: grid-cols-1">
         <div className="flex flex-col justify-center items-center gap-10">
-          <h1 className="text-6xl text-primary font-bold">Welcome Back</h1>
+          <h1 className="text-6xl text-primary font-bold text-center">Welcome Back</h1>
           <div className="shape-login-from">
             <form className="h-full w-full items-center flex border-[6px] border-black  bg-white justify-center flex-col p-10 gap-5">
               <h1 className="flex font-semibold gap-2 text-xl w-full">

@@ -84,7 +84,7 @@ const SignUp = () => {
   return (
     <>
       {/* <Layout> */}
-      <div className="grid grid-cols-2 h-[920px] border-b-4 border-black">
+      <div className="grid md:grid-cols-2 h-[920px] border-b-4 border-black">
         <div className="overlay bg-hero-pattern bg-left-top bg-cover">
           <div className="overlay">
             <div className="flex flex-col w-full justify-center items-center text-white h-full gap-10">
