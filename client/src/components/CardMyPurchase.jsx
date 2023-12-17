@@ -30,7 +30,7 @@ const CardMyPurchase = ({ purchase }) => {
               </div>
             ))}
             <h1 className="flex gap-3 text-xl font-semibold">
-              Order Total:<p className="text-primary">{book.totalAmout}</p>
+              Order Total:<p className="text-primary">{book.totalAmout}THB</p>
             </h1>
           </div>
         );

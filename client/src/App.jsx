@@ -74,7 +74,7 @@ function App() {
             <Route path="/All" element={<AllBookPage/>}/>
             <Route path="/publisher" element={<PublisherPage/>}/>
             <Route path="/genre" element={<Genera/>}/>
-            <Route path="/newrelease" element={<NewRelease/>}/>
+            <Route path="/ShoppingPage/:filter" element={<NewRelease/>}/>
           </Routes>
         </Layout>
       </DataContext.Provider>
