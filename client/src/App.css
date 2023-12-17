@@ -13,6 +13,7 @@
 }
 
 .card-item {
+  background-color: #fff;
   width: 100%;
   border: 2px solid black;
   height: 100%;

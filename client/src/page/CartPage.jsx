@@ -33,7 +33,6 @@ const CartPage = () => {
     bookID.push(item.bookID);
   });
 
-  console.log(bookID);
 
   const handleDeleteCheckout = async (userID) => {
     try {
@@ -56,6 +55,8 @@ const CartPage = () => {
       window.location.reload();
     });
   };
+
+
 
   return (
     <>

@@ -125,16 +125,16 @@ const Nav = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="#">New Release</a>
+                <Link to="/newrelease">New Release</Link>
               </li>
               <li>
-                <a href="#">BestSeller</a>
+                <Link to="">BestSeller</Link>
               </li>
               <li>
-                <a href="#">Genea</a>
+                <Link to="/genre">Genea</Link>
               </li>
               <li>
-                <a href="#">Publisher</a>
+                <Link to="/publisher">Publisher</Link>
               </li>
               <li>
                 <Link to="/Account/BooksCollection">BooksCollection</Link>

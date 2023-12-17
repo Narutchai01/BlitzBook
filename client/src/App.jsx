@@ -18,6 +18,10 @@ import CartPage from "./page/CartPage";
 import BooksCollection from "./page/BooksCollection";
 import ChangePassword from "./page/ChangePassword";
 import MyPurchasePage from "./page/MyPurchasePage";
+import AllBookPage from "./page/AllBookPage";
+import PublisherPage from "./page/PublisherPage";
+import Genera from "./page/Genera";
+import NewRelease from "./page/NewRelease";
 
 export const DataContext = createContext();
 
@@ -67,6 +71,10 @@ function App() {
             <Route path="/Account/BooksCollection" element={<BooksCollection/>} />
             <Route path="/Account/changepassword" element={<ChangePassword />} />
             <Route path="/Account/MyPurchase" element={<MyPurchasePage />} />
+            <Route path="/All" element={<AllBookPage/>}/>
+            <Route path="/publisher" element={<PublisherPage/>}/>
+            <Route path="/genre" element={<Genera/>}/>
+            <Route path="/newrelease" element={<NewRelease/>}/>
           </Routes>
         </Layout>
       </DataContext.Provider>

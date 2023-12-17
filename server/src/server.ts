@@ -33,6 +33,8 @@ import { test } from "./controller/Test";
 import { getBestSaler } from "./controller/BestsalerController";
 import { auth } from "./middleware/auth";
 import { MyPurchaseController } from "./controller/MyPurchaseController";
+import { GetMyCollection } from "./controller/GetMyCollection";
+import { AddSeries } from "./controller/admin/AddSeries";
 
 //define zone
 const port = config.port;
@@ -84,6 +86,7 @@ app.delete("/api/deleteBookinCartForCheckout",DeleteBookinCartForCheckout);
 app.get("/api/getDataUserByID/:id", getDataUserByID);
 app.get("/api/getBestSaler", getBestSaler);
 app.get("/api/MyPurchase",MyPurchaseController);
+app.get("/api/getCollection",GetMyCollection);
 
 
 //admin router
@@ -97,6 +100,7 @@ app.post("/api/addAuthor",AaddAuthor);
 app.post("/api/addPublisher",AaddPublisher);
 app.post("/api/addCatagory",AddCategory);
 app.post("/api/test",test);
+app.post("/api/addSeries",AddSeries);
 
 
 

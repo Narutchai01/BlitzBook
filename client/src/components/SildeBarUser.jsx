@@ -24,7 +24,7 @@ const SildeBarUser = () => {
           <BiPurchaseTagAlt className="text-yellow" />
           <h1>My Purchase</h1>
         </Link>
-        <Link to="/account/payment" className="flex items-center gap-2 text-2xl">
+        <Link to="/Account/BooksCollection" className="flex items-center gap-2 text-2xl">
           <BsBookHalf />
           <h1>My Books Collection</h1>
         </Link>
