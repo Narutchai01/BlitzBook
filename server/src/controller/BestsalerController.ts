@@ -11,31 +11,8 @@ export const getBestSaler = async (req: Request, res: Response) => {
         {
           $sort: { sales: -1 },
         },
-        {
-          $lookup: {
-            from: "Author",
-            localField: "author",
-            foreignField: "_id",
-            as: "authorDetails",
-          },
-        },
-        {
-          $lookup: {
-            from: "Publisher",
-            localField: "publisher",
-            foreignField: "_id",
-            as: "publisherDetails",
-          },
-        },
-        {
-          $lookup: {
-            from: "Category",
-            localField: "category",
-            foreignField: "_id",
-            as: "categoryDetails",
-          },
-        },
-      ]).toArray();
+      ])
+      .toArray();
     res.status(200).send({
       data: result,
     });

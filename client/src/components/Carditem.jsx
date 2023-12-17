@@ -25,7 +25,7 @@ const Carditem = ({ data }) => {
       {data?.map((item) => {
         return (
           <div
-            key={item._id}
+              key={item._id}
             className="card-item"
             onClick={(e) => {
               e.stopPropagation();

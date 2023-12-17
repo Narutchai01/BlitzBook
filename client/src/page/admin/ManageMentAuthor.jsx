@@ -13,9 +13,13 @@ const ManageMentAuthor = () => {
   const [dataCategory, setDataCategory] = useState({
     name: "",
   });
+  const [dataSeries, setDataSeries] = useState({
+    name: "",
+  });
   const [Author, setAuthor] = useState([]);
   const [Publisher, setPublisher] = useState([]);
   const [Category, setCategory] = useState([]);
+  const [Series, setSeries] = useState([]);
 
   const handleChangeAuthor = (e) => {
     setDataAuthor({
@@ -36,6 +40,12 @@ const ManageMentAuthor = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const handleChangeSeries = (e) => {
+    setDataSeries({
+      ...dataSeries,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const addAuthor = async () => {
     axiosInstance.post("/api/addAuthor", dataAuthor).then((res) => {
@@ -53,6 +63,11 @@ const ManageMentAuthor = () => {
       console.log(res.data);
     });
   };
+  const addSeries = async () => {
+    axiosInstance.post("/api/addSeries", dataSeries).then((res) => {
+      console.log(res.data);
+    });
+  };
 
   useEffect(() => {
     const getAuthor = async () => {
@@ -67,9 +82,14 @@ const ManageMentAuthor = () => {
       const res = await axiosInstance.get("/api/getWriterBy/Category");
       setCategory(res.data.result);
     };
+    const getSeries = async () => {
+      const res = await axiosInstance.get("/api/getWriterBy/Series");
+      setSeries(res.data.result);
+    };
     getAuthor();
     getPublisher();
     getCategory();
+    getSeries();
   }, []);
 
   console.log(Author);
@@ -124,6 +144,20 @@ const ManageMentAuthor = () => {
                 </div>
                 <button type="submit">add Category</button>
               </form>
+              <form onSubmit={addSeries}>
+                <div>
+                  <label className="block text-gray-700 text-sm font-bold mb-2">
+                    addd Series
+                  </label>
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    name="name"
+                    onChange={handleChangeSeries}
+                  />
+                </div>
+                <button type="submit">add Series</button>
+              </form>
             </div>
             <div>
               <div className="">
@@ -144,6 +178,12 @@ const ManageMentAuthor = () => {
                 <h1>Category</h1>
                 <div className="grid grid-cols-5 gap-5 w-full">
                   <CardWritter data={Category} type={"Category"} />
+                </div>
+              </div>
+              <div>
+                <h1>Series</h1>
+                <div className="grid grid-cols-5 gap-5 w-full">
+                  <CardWritter data={Series} type={"Series"} />
                 </div>
               </div>
             </div>

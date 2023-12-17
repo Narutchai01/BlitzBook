@@ -4,12 +4,16 @@ const CardMyPurchase = ({ purchase }) => {
   return (
     <>
       {purchase?.map((book) => {
+        
+        const date = new Date(book.date).toDateString();
+        const time = new Date(book.date).toLocaleTimeString();
+
         return (
           <div
             key={book._id}
             className="border-2 border-black py-4 px-8 h-auto w-full flex flex-col gap-10"
           >
-            <h1>{book.date}</h1>
+            <h1 className="font-semibold text-2xl">{date} {time}</h1>
             {book.book?.map((item) => (
               <div key={item._id} className="flex gap-3">
                 <div>
