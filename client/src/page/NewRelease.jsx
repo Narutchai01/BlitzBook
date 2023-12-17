@@ -1,8 +1,12 @@
 import Carditem from "../components/Carditem";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../lib/axios";
+import {useParams} from "react-router-dom"
 
 const NewRelease = () => {
+
+
+  const {filter} = useParams();
   const [book, setBook] = useState([]);
   const [Publisher, setPublisher] = useState([]);
   const [Category, setCategory] = useState([]);
@@ -19,6 +23,31 @@ const NewRelease = () => {
       setCategory(res.data.result);
     });
   }, []);
+
+
+const [isPushed, setIsPushed] = useState(false);
+
+useEffect(() => {
+  if (!isPushed) {
+    if (filter === "newrelease" || filter === "bestsaler") {
+      Publisher.map((item) => {
+        filterArr.push(item.name);
+      });
+    } else if (
+      Publisher.map((item)=>{
+        filter === item.name
+      }) ||
+      Category.map((item)=>{
+        filter === item.name
+      })
+    ) {
+      filterArr.push(filter);
+    }
+    // setIsPushed(true);
+  }
+}, [Publisher, filter, filterArr, isPushed ,Category]);
+
+
 
   const handleCheckBox = (e) => {
     if (e.target.checked) {
@@ -65,6 +94,9 @@ const NewRelease = () => {
     );
   });
 
+
+  console.log(filterArr);
+
   return (
     <>
       <div className="bg-hero-pattern w-full h-[360px]">
@@ -76,7 +108,7 @@ const NewRelease = () => {
       </div>
       <div className="grid grid-cols-[360px_1fr] border-b-2 border-black h-auto my-10">
         <div className="h-full">
-          <div className="h-[423px] bg-yellow w-[288px]">
+          <div className="h-[423px] bg-yellow w-[288px] border-black border-4">
             <div>
               <h1 className="text-3xl text-center font-bold text-black my-5">
                 Publisher

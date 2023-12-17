@@ -125,10 +125,10 @@ const Nav = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/newrelease">New Release</Link>
+                <Link to="/ShoppingPage/newrelease">New Release</Link>
               </li>
               <li>
-                <Link to="">BestSeller</Link>
+                <Link to="/ShoppingPage/bestsaler">BestSeller</Link>
               </li>
               <li>
                 <Link to="/genre">Genea</Link>

@@ -14,7 +14,7 @@ const PublisherPage = () => {
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-BOOMStudios w-[647px] h-[323.5px] bg-no-repeat bg-cover bg-center flex justify-center items-center font-HomeHeader text-white border-2 border-black">
             <div className="OverLay">
-              <h1 className="text-3xl text-center">BOOM! Studios</h1>
+              <h1 className="text-3xl text-center uppercase">BOOM! Studios</h1>
               <img src={bmlogo} alt="" />
             </div>
           </div>
