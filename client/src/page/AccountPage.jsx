@@ -24,12 +24,12 @@ const AccountPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-[360px_4fr] h-screen border-b-2 border-black">
+      <div className="grid md:grid-cols-[360px_4fr] h-screen border-b-2 border-black">
         <SildeBarUser />
         <div className="w-full">
           <div className="px-16 py-8">
             <h1 className="text-3xl font-semibold">My Profile</h1>
-            <div className="w-full grid grid-cols-3 gap-10 text-xl font-semibold">
+            <div className="w-full grid md:grid-cols-3 gap-10 text-xl font-semibold">
               <div className="flex flex-col gap-4">
                 <h1>Username</h1>
                 <h1>{user.username}</h1>

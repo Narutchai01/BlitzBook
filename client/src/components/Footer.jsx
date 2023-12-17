@@ -10,21 +10,21 @@ const Footer = () => {
     <>
       <footer className="h-[323px]">
         <div className="container mx-auto my-auto py-[159px]">
-          <div className="flex justify-between items-center h-full">
-            <div className="w-[300px] gap-5 flex flex-col">
-              <h1 className=" text-5xl text-primary font-bold font-fontNav">
+          <div className="flex md:justify-between flex-col items-center h-full md:flex-row">
+            <div className="md:w-[300px] gap-5 flex flex-col ">
+              <h1 className=" md:text-5xl text-primary font-bold font-fontNav w-full flex justify-center text-3xl">
                 BlitzBook
               </h1>
-              <p className="w-full text-lg font-medium">
+              <p className="w-full text-lg font-medium px-10 text-center">
                 We have the largest and most comprehensive selection of comics
                 and graphic novels from all your favorite publishers in a form
                 of ebook.
               </p>
             </div>
-            <div className="w-[234px] flex flex-col ">
-              <h1 className="text-primary text-2xl font-bold">Browse</h1>
-              <div className="flex text-lg gap-1 font-medium w-full">
-                <ul>
+            <div className="md:w-[360px] flex flex-col w-full">
+              <h1 className="text-primary text-2xl font-bold md:text-left text-center">Browse</h1>
+              <div className="grid grid-cols-2 md:text-lg gap-1 font-medium w-full md:text-start text-center">
+                <ul className="">
                   <li>
                     <Link>Home</Link>
                   </li>
@@ -41,7 +41,7 @@ const Footer = () => {
                     <Link>Publisher</Link>
                   </li>
                 </ul>
-                <ul className="">
+                <ul className="w-full">
                   <li>
                     <Link>Variants</Link>
                   </li>
@@ -60,9 +60,9 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="w-[172px]">
+            <div className="items-center flex flex-col">
               <h1 className="text-primary text-2xl font-bold">Contact</h1>
-              <div className="text-lg">
+              <div className="text-xl">
                 <div className="contact-footer ">
                   <FiMapPin />
                   Home
@@ -84,8 +84,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-secondary mb-5 w-full h-[36px] flex justify-center items-center">
-          <p className="text-center text-lg font-medium">
+        <div className="bg-secondary mb-5 w-full md:h-[36px] flex md:justify-center items-center h-auto ">
+          <p className="text-center md:text-lg font-medium">
             CoppyRight ©2023 BlitzBook. All Rights Reserved.
           </p>
         </div>

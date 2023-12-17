@@ -49,14 +49,14 @@ const ChangePassword = () => {
 
   return (
     <>
-      <div className="grid grid-cols-[360px_4fr] h-screen border-b-2 border-black">
+      <div className="grid md:grid-cols-[360px_4fr] h-screen border-b-2 border-black">
         <SildeBarUser />
         <div className="w-full">
           <div className="px-16 py-8">
             <h1 className="text-3xl font-semibold">Change Password</h1>
           </div>
           <div>
-            <form onSubmit={handleSubmit} className="px-16 py-8  w-4/12 text-xl font-semibold">
+            <form onSubmit={handleSubmit} className="px-16 py-8  md:w-4/12 text-xl font-semibold">
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
                   <label>Old Password</label>

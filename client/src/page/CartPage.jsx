@@ -60,16 +60,16 @@ const CartPage = () => {
 
   return (
     <>
-      <div className="border-b-2 border-black min-h-[508px]">
-        <div className="grid grid-cols-[3fr_1fr] h-auto mx-auto px-11 container">
+      <div className="border-b-2 border-black md:min-h-[508px] h-auto">
+        <div className="grid md:grid-cols-[3fr_1fr] h-auto mx-auto px-11 container">
           <div className=" my-8 flex flex-col gap-12 justify-center">
             <h1 className="font-semibold text-2xl">Shopping Cart</h1>
             <div className="flex flex-col gap-8 ">
               <CardCart dataCart={renderData} />
             </div>
           </div>
-          <div>
-            <div className="fixed bg-third w-[296px] h-[244px] px-4 py-8 grid text-white border-4 border-black font-semibold my-10">
+          <div className="min-h-full">
+            <div className="md:fixed bg-third md:w-[296px] h-[244px] px-4 py-8 grid text-white border-4 border-black font-semibold my-10">
               <h1 className="text-lg">Total {data.length} items</h1>
               <div className="h-[3px] bg-white"></div>
               <div className="flex justify-between text-2xl">

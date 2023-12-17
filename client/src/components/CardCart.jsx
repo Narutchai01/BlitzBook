@@ -8,9 +8,9 @@ const CardCart = ({ dataCart }) => {
     return (
       <div
         key={item.bookID}
-        className="flex border-2 gap-4 border-black h-[242px] py-2 px-8 w-[952px] font-semibold"
+        className="grid md:grid-cols-[180px_1fr] border-2 gap-4 border-black md:h-[242px] py-2 px-8 md:w-[952px] font-semibold"
       >
-        <div className="h-full w-[140px]">
+        <div className="h-full md:w-[140px]">
           <img src={item.bookImage} alt="" className="h-full w-full" />
         </div>
         <div className="flex flex-col my-2 gap-3 h-full w-full ">

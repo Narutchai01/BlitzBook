@@ -106,9 +106,9 @@ useEffect(() => {
           </h1>
         </div>
       </div>
-      <div className="grid grid-cols-[360px_1fr] border-b-2 border-black h-auto my-10">
+      <div className="grid md:grid-cols-[360px_1fr] border-b-2 border-black h-auto my-10">
         <div className="h-full">
-          <div className="h-[423px] bg-yellow w-[288px] border-black border-4 sticky z-10 top-1">
+          <div className="md:h-[423px] bg-yellow md:w-[288px] border-black border-4 sticky z-10 top-1">
             <div>
               <h1 className="text-3xl text-center font-bold text-black my-5">
                 Publisher
@@ -119,7 +119,7 @@ useEffect(() => {
             {checkBoxCategory}
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-7 mb-10">
+        <div className="grid md:grid-cols-5 gap-7 mb-10 justify-center">
           <Carditem data={filteredBooks} />
         </div>
       </div>

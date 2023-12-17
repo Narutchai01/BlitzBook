@@ -42,8 +42,8 @@ const Bookpage = () => {
   return (
     <>
       <div className="mx-auto px-20 border-b-4 border-black">
-        <div className="flex w-full my-8 gap-10">
-          <div className="w-[360px] max-w-full h-[608px]">
+        <div className="grid md:grid-cols-[360px_1fr] w-full my-8 gap-10">
+          <div className="md:w-[360px] max-w-full h-[608px]">
             <div className="w-full">
               <img src={data.image} alt="" className="w-[296px] h-[444px]" />
             </div>
