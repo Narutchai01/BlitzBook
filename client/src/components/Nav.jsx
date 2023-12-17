@@ -1,7 +1,7 @@
 import { FaUserLarge } from "react-icons/fa6";
-import { MdShoppingCart  } from "react-icons/md";
+import { MdShoppingCart } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../App";
 import { axiosInstance } from "../lib/axios";
 
@@ -10,6 +10,52 @@ const Nav = () => {
   const { userInfo } = useContext(DataContext);
   const token = userInfo?.loginState || false;
   const role = userInfo?.role || "";
+  const [search, setSearch] = useState([]);
+  const [searchResult, setSearchResult] = useState("");
+
+  // ...
+
+  useEffect(() => {
+    const fetchSearch = async () => {
+      axiosInstance.get("/api/getallbooks").then((res) => {
+        setSearch(res.data);
+      });
+    };
+    fetchSearch();
+  }, []);
+
+  const handleSearch = (e) => {
+    setSearchResult(e.target.value);
+  };
+
+  function searchBooks(keyword) {
+    if (!keyword) {
+      return [];
+    }
+    const results = search.filter((book) => {
+      const title = book.title.toLowerCase();
+      return title.includes(keyword.toLowerCase());
+    });
+    return results;
+  }
+
+  const ShowSearch = searchBooks(searchResult).map((item) => {
+    if (item.title !== undefined) {
+      return (
+        <div className="bg-white w-full text-black absolute top-12 rounded-lg" key={item._id}>
+          <Link to={`/book/${item._id}`}>
+            <div className="flex flex-col items-center">
+              <p>{item.title}</p>
+            </div>
+          </Link>
+        </div>
+      );
+    }
+  });
+
+  // console.log(searchBooks(searchResult).map((item)=>item.title));
+
+  console.log(ShowSearch);
 
   const haveToken = () => {
     return (
@@ -66,7 +112,7 @@ const Nav = () => {
               </div>
             </Link>
             <div className="bg-white w-[2px] h-12"></div>
-            <Link to="/Cart" onClick={()=> window.scrollTo(0.0)}>
+            <Link to="/Cart" onClick={() => window.scrollTo(0.0)}>
               <div className="flex flex-col items-center">
                 <MdShoppingCart />
                 <p>Cart</p>
@@ -107,12 +153,14 @@ const Nav = () => {
                   <h1 className="text-4xl font-bold font-fontNav">BlitzBook</h1>
                 </Link>
               </div>
-              <div>
+              <div className="flex flex-col relative">
                 <input
                   type="text"
                   className="text-black w-96 px-2 rounded-full py-1"
                   placeholder="search...."
+                  onChange={handleSearch}
                 />
+                {ShowSearch}
               </div>
               {token ? haveToken() : noToken()}
             </div>

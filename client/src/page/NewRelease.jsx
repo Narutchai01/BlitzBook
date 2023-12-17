@@ -43,7 +43,7 @@ useEffect(() => {
     ) {
       filterArr.push(filter);
     }
-    setIsPushed(true);
+    // setIsPushed(true);
   }
 }, [Publisher, filter, filterArr, isPushed ,Category]);
 
@@ -108,7 +108,7 @@ useEffect(() => {
       </div>
       <div className="grid grid-cols-[360px_1fr] border-b-2 border-black h-auto my-10">
         <div className="h-full">
-          <div className="max-h-[423px] bg-yellow w-[288px] border-black border-4">
+          <div className="h-[423px] bg-yellow w-[288px] border-black border-4 sticky z-10 top-1">
             <div>
               <h1 className="text-3xl text-center font-bold text-black my-5">
                 Publisher
