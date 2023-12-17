@@ -21,7 +21,7 @@ const MyPurchasePage = () => {
       }
     };
     getPurchase();
-  }, [userInfo]);
+  }, [userInfo.id]);
 
   console.log(purchase);
 
