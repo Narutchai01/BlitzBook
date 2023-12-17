@@ -10,4 +10,7 @@ export const config:IConfig  = {
     RDS_PASSWORD : process.env.PASSWORD_DB || 'admin123',
     RDS_DB_NAME : process.env.DBS_NAME || 'admin123',
     RDS_PORT : Number(process.env.PORT_DB) || 3306,
+    supabaseKey:String(process.env.SUPABASE_KEY) ,
+    supabaseURL:String(process.env.SUPABASE_URL) , 
+    origin: String(process.env.ORIGIN),
 }

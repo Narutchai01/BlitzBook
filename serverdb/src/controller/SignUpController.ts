@@ -1,36 +1,33 @@
 import { Request , Response, query } from "express";
-import { Connect , Query } from "../lib/mysql";
+import { dbConnect } from "../lib/mysql";
 import { hashPassword } from "../lib/ManagePassword";
-
-
+import { getErrorMessage , reportError } from "../lib/Error";
 
 
 export const signup = async (req: Request , res: Response) => {
-    
+         
     try {
-        const { username, password, email, role} = req.body;
+        const client = await dbConnect();
+        const { fname, lname, username , date, email, password, role} = req.body;
         const createuser = {
-            username ,
-            password: await hashPassword(password),
+            fname, 
+            lname, 
+            username,
+            date: date || "curdate()",
             email,
-            role : role || "user"
-        };
-        let query = `INSERT INTO User(username, password, email, role) VALUES ("${createuser.username}", "${createuser.password}", "${createuser.email}", "${createuser.role}")`;
-        await Connect()
-        .then(connection => {
-            Query(connection , query)
-            .then(user => {
-                return res.status(201).json({
-                    user
-                })
-            })
-            }).catch(Error => {
-            return res.status(500).json({
-                message: Error.message,
-                Error
-            })
+            password: await hashPassword(password),
+            role: role || "user",
+        }
+        
+        await client.query(`INSERT INTO User(fname, lname, username , date, email, password, role) VALUES(
+            "${createuser.fname}", "${createuser.lname}", "${createuser.username}", ${createuser.date}, "${createuser.email}","${createuser.password}", "${createuser.role}"
+        )`);
+        
+        
+        return res.status(201).send({
+            message: "Sign up sucessed",
         })
     } catch (error) {
-        console.log(Error, error);
+        reportError({message: getErrorMessage(error)})
     }
 }

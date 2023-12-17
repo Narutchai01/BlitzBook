@@ -5,4 +5,7 @@ export interface IConfig {
     RDS_PASSWORD : string;
     RDS_DB_NAME : string;
     RDS_PORT : number;
+    supabaseURL: string;
+    supabaseKey: string;
+    origin: string;
 }
