@@ -24,6 +24,8 @@ import { changePassword } from "./controller/ChangePasswordController";
 import { GetBookByID } from "./controller/GetBookByID";
 import { GetBookInCart } from "./controller/GetBookInCart";
 import { GetDataUserByID } from "./controller/GetDataUserByID";
+import { NewRelease } from "./controller/NewRelease";
+import { auth } from "./middleware/auth";
 
 //define zone
 const PORT = config.port;
@@ -40,32 +42,33 @@ export const secret = "HS256";
 
 //route zone
 app.get("/api/getallbooks" , GetAllBook)
-app.get("/api/checktoken" , checkToken)
+app.get("/api/checkToken" , checkToken)
 
 
 //User
 app.post("/api/signup" , signup)
 app.post("/api/login" , login)
 app.post("/api/logout" , logout)
-app.put("/api/changepassword" , changePassword)
+app.put("/api/changepassword" , auth , changePassword)
 app.get("/api/MyPurchase" , MyPurchase)
-app.get("/api/getdatauserbyid/:id" , GetDataUserByID)
-app.get("/api/getbookbyid/:id" , GetBookByID)
-app.get("/api/getbookincart" , GetBookInCart)
+app.get("/api/getDataUserbyID/:id" , GetDataUserByID)
+app.get("/api/getBookByID/:id" , GetBookByID)
+app.get("/api/getBookinCart" , GetBookInCart)
+app.get("/api/getNewReleases", NewRelease);
+app.post("/api/addToCart" , auth , AddtoCart)
 
 
 //Admin
-app.post("/api/addauthor" , AddAuthor)
-app.post("/api/addcategory" , AddCategory)
-app.post("/api/addpublisher" , AddPublisher)
-app.post("/api/addseries" , AddSeries)
-app.post("/api/addtocart" , AddtoCart)
+app.post("/api/addAuthor" , AddAuthor)
+app.post("/api/addCategory" , AddCategory)
+app.post("/api/addPublisher" , AddPublisher)
+app.post("/api/addSeries" , AddSeries)
 app.put("/api/changepasswordbyadmin" , ChangePasswordByAdmin)
 app.put("/api/updatebook" , UpdateBook)
 app.get("/api/getalluser" , GetAllUser)
-app.get("/api/getauthor" , GetAuthor)
+app.get("/api/getWriterBy/:writer" , GetAuthor)
 app.delete("/api/deleteuserbyid/:id" , DeleteUserByID)
-app.delete("/api/deleteauthor/:id" , DeleteAuthor)
+app.delete("/api/deleteWriter/:type/:id" , DeleteAuthor)
 app.delete("/api/deletebook/:id" , DeleteBookByID)
 
 
