@@ -7,7 +7,7 @@ export const ChangePasswordByAdmin = async (req: Request , res: Response ) => {
         const { id } = req.params;
         const { password } = req.body;
         const client = await dbConnect();
-        await client.query(`UPDATE User SET password = "?" WHERE _id = "?"` , { password , id })
+        await client.query(`UPDATE User SET password = "?" WHERE _id = ?` , { password , id })
         return res.status(200).send({
             message: "Update password successed",
         })

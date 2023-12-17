@@ -20,6 +20,7 @@ export const PostBook = async (req: Request , res: Response ) => {
         }
       })
     );
+
         const { title, author, price, description, publisher, category , date} = req.body;
         const client = await dbConnect();
 
@@ -37,6 +38,7 @@ export const PostBook = async (req: Request , res: Response ) => {
         }
         }));
 
+        
         const pdfResult = await pdf;
         const imageData = await image;
 
@@ -50,11 +52,32 @@ export const PostBook = async (req: Request , res: Response ) => {
         image: imageData[1],
         pdf: pdfResult[0],
         sales: 0,
-        date
+        date: date || "curdate()" 
         };
-            return res.status(200).send({
-                author
-            })
+
+        // add book
+        const addbook:any = await client.query(`INSERT INTO 
+        Comic(title,price,description,image,pdf,sales,date) VALUES("${data.title}",${data.price},"${data.description}",
+        "${data.image}","${data.pdf}",${data.sales},${data.date})`)
+        
+        //get bookid
+        const book:any = await client.query(`SELECT _id FROM Comic WHERE title = "${data.title}"`)
+    
+        //add publsiher to book
+        const findpub:any = await client.query(`SELECT * FROM Publisher WHERE name = "${data.publisher}"`);
+        await client.query(`INSERT INTO Publisher_Comic SET bookID = ${book[0][0]._id} , publisherID = ${findpub[0][0]._id}`)
+        
+        // add author to book
+        const findaut:any = await client.query(`SELECT * FROM Author WHERE name = "${data.author}"`)
+        await client.query(`INSERT INTO Author_Comic SET bookID = ${book[0][0]._id} , authorID = ${findaut[0][0]._id}`)
+
+        //add category to book
+        const findcat:any = await client.query(`SELECT * FROM Category WHERE name = "${data.category}"`)
+        await client.query(`INSERT INTO Category_Comic SET bookID = ${book[0][0]._id} , categoryID = ${findcat[0][0]._id}`)
+
+        const result:any = await client.query(`SELECT * FROM ComicBook WHERE _id = ${book[0][0]._id}`)
+        res.send(result[0])
+            
     } catch (error) {
         reportError({message: getErrorMessage(error)})
         

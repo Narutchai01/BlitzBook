@@ -6,7 +6,7 @@ export const DeleteAuthor = async (req: Request , res: Response ) => {
     try {
         const { id } = req.params;
         const client = await dbConnect();
-        await client.query(`DELETE FROM Author WHERE _id = "?"` , id )
+        await client.query(`DELETE FROM Author WHERE _id = ?` , id )
         return res.status(200).send({
             message: "Delete author successed",
         })

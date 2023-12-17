@@ -10,7 +10,7 @@ export const AddCategory = async (req: Request , res: Response ) => {
             res.status(400).send({message:"Please enter Category name"});
             return false;
         }
-        await client.query(`INSERT INTO Publisher(name) VALUES(?)`, name)
+        await client.query(`INSERT INTO Category(name) VALUES(?)`, name)
         return res.status(201).send({
             message: "Add Category successed",
         })

@@ -8,7 +8,6 @@ import { login } from "./controller/LoginController";
 import { MyPurchase } from "./controller/MyPurchaseController";
 import { AddPublisher } from "./controller/Admin/AddPublisher";
 import { AddAuthor } from "./controller/Admin/AddAuthor";
-import { AddSeries } from "./controller/Admin/AddSeries";
 import { AddCategory } from "./controller/Admin/AddCategory";
 import { DeleteUserByID } from "./controller/Admin/DeleteUserBYID";
 import { DeleteAuthor } from "./controller/Admin/DeleteAuthor";
@@ -26,6 +25,12 @@ import { GetBookInCart } from "./controller/GetBookInCart";
 import { GetDataUserByID } from "./controller/GetDataUserByID";
 import { NewRelease } from "./controller/NewRelease";
 import { auth } from "./middleware/auth";
+import { BestSaler } from "./controller/BestSaler";
+import { PostBook } from "./controller/Admin/PostBook";
+
+
+import { test } from "./controller/test";
+
 
 //define zone
 const PORT = config.port;
@@ -54,15 +59,16 @@ app.get("/api/MyPurchase" , MyPurchase)
 app.get("/api/getDataUserbyID/:id" , GetDataUserByID)
 app.get("/api/getBookByID/:id" , GetBookByID)
 app.get("/api/getBookinCart" , GetBookInCart)
+app.get("/api/getBestSaler", BestSaler);
 app.get("/api/getNewReleases", NewRelease);
 app.post("/api/addToCart" , auth , AddtoCart)
+app.post("/api/postbook" , PostBook)
 
 
 //Admin
 app.post("/api/addAuthor" , AddAuthor)
 app.post("/api/addCategory" , AddCategory)
 app.post("/api/addPublisher" , AddPublisher)
-app.post("/api/addSeries" , AddSeries)
 app.put("/api/changepasswordbyadmin" , ChangePasswordByAdmin)
 app.put("/api/updatebook" , UpdateBook)
 app.get("/api/getalluser" , GetAllUser)
@@ -71,7 +77,7 @@ app.delete("/api/deleteuserbyid/:id" , DeleteUserByID)
 app.delete("/api/deleteWriter/:type/:id" , DeleteAuthor)
 app.delete("/api/deletebook/:id" , DeleteBookByID)
 
-
+app.post("/api/test" , test)
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`)

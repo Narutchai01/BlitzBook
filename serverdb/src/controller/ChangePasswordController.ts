@@ -17,7 +17,7 @@ export const changePassword =async (req: Request, res:Response) => {
             return res.status(400).send("Wrong password");
         }
         const hash = await hashPassword(newpassword);
-        const newpass = await client.query(`UPDATE User SET password = "?" WHERE ._id = ?`, { hash , id });
+        const newpass = await client.query(`UPDATE User SET password = ? WHERE ._id = ?`, { hash , id });
         res.status(200).send("Change password successed");
     } catch (error) {
         reportError({message: getErrorMessage(error)})

@@ -10,7 +10,7 @@ export const login = async (req:Request , res:Response) => {
     try {
         const client = dbConnect();
         const { email , password } = req.body;
-        const result : any = await client.query(`SELECT * FROM User WHERE email = "?"`, [email])
+        const result : any = await client.query(`SELECT * FROM User WHERE email = ?`, [email])
         const MatchPassword = await matchPassword(password, result.password);
         if (result[0] !== null && !(MatchPassword))
             return res.status(401).send({

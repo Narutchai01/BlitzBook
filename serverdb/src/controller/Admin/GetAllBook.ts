@@ -5,7 +5,7 @@ import { reportError , getErrorMessage } from '../../lib/Error';
 export const GetAllBook = async (req: Request , res: Response ) => {
     try {
         const client = await dbConnect();
-        const result = await client.query(`SELECT * FROM ComicBook`)
+        const result:any = await client.query(`SELECT * FROM ComicBook`)
         const book = result[0]
         return res.status(200).send({
             book    
