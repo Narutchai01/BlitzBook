@@ -75,7 +75,6 @@ app.get("/api/getallbooks", getallBooks);
 app.post("/api/login", login);
 app.post("/api/signup", signup);
 app.put("/api/changepassword", auth,changePassword);
-app.get("/api/searchbook", searchbook);
 app.get("/api/logout",logout);
 app.get("/api/getBookByID/:id",getBookByID);
 app.post("/api/addToCart",auth,AddtoCart);

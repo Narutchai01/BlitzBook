@@ -10,10 +10,10 @@ import { AddPublisher } from "./controller/Admin/AddPublisher";
 import { AddAuthor } from "./controller/Admin/AddAuthor";
 import { AddCategory } from "./controller/Admin/AddCategory";
 import { DeleteUserByID } from "./controller/Admin/DeleteUserBYID";
-import { DeleteAuthor } from "./controller/Admin/DeleteAuthor";
+import { DeleteWriter } from "./controller/Admin/DeleteWriter";
 import { DeleteBookByID } from "./controller/Admin/DeleteBookByID";
 import { GetAllUser } from "./controller/Admin/GetAllUser";
-import { GetAuthor } from "./controller/Admin/GetAuthor";
+import { GetWriter } from "./controller/Admin/GetWriter";
 import { ChangePasswordByAdmin } from "./controller/Admin/ChangePasswordByAdmin";
 import { AddtoCart } from "./controller/Admin/AddtoCart";
 import { UpdateBook } from "./controller/Admin/UpdateBookController";
@@ -27,6 +27,7 @@ import { NewRelease } from "./controller/NewRelease";
 import { auth } from "./middleware/auth";
 import { BestSaler } from "./controller/BestSaler";
 import { PostBook } from "./controller/Admin/PostBook";
+
 
 
 import { test } from "./controller/test";
@@ -46,14 +47,15 @@ app.use(multerMid.array("file"));
 export const secret = "HS256";
 
 //route zone
-app.get("/api/getallbooks" , GetAllBook)
 app.get("/api/checkToken" , checkToken)
+app.get("/api/getallbooks" , GetAllBook)
 
 
 //User
 app.post("/api/signup" , signup)
 app.post("/api/login" , login)
 app.post("/api/logout" , logout)
+app.post("/api/addToCart" , auth,AddtoCart)
 app.put("/api/changepassword" , auth , changePassword)
 app.get("/api/MyPurchase" , MyPurchase)
 app.get("/api/getDataUserbyID/:id" , GetDataUserByID)
@@ -61,21 +63,21 @@ app.get("/api/getBookByID/:id" , GetBookByID)
 app.get("/api/getBookinCart" , GetBookInCart)
 app.get("/api/getBestSaler", BestSaler);
 app.get("/api/getNewReleases", NewRelease);
-app.post("/api/addToCart" , auth , AddtoCart)
-app.post("/api/postbook" , PostBook)
 
 
 //Admin
 app.post("/api/addAuthor" , AddAuthor)
 app.post("/api/addCategory" , AddCategory)
 app.post("/api/addPublisher" , AddPublisher)
+app.post("/api/postbook" , PostBook)
 app.put("/api/changepasswordbyadmin" , ChangePasswordByAdmin)
-app.put("/api/updatebook" , UpdateBook)
+app.put("/api/updatebook/:id" , UpdateBook)
 app.get("/api/getalluser" , GetAllUser)
-app.get("/api/getWriterBy/:writer" , GetAuthor)
+app.get("/api/getWriterBy/:writer" , GetWriter)
 app.delete("/api/deleteuserbyid/:id" , DeleteUserByID)
-app.delete("/api/deleteWriter/:type/:id" , DeleteAuthor)
+app.delete("/api/deleteWriter/:type/:id" , DeleteWriter)
 app.delete("/api/deletebook/:id" , DeleteBookByID)
+
 
 app.post("/api/test" , test)
 
