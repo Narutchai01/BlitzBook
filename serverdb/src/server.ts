@@ -27,7 +27,7 @@ import { NewRelease } from "./controller/NewRelease";
 import { auth } from "./middleware/auth";
 import { BestSaler } from "./controller/BestSaler";
 import { PostBook } from "./controller/Admin/PostBook";
-
+import cors from 'cors'
 
 import { test } from "./controller/test";
 
@@ -44,6 +44,13 @@ const multerMid = multer({
 app.use(multerMid.array("file"));
 
 export const secret = "HS256";
+
+app.use(cors(
+  {
+    origin: "http://localhost:5173",
+    credentials: true,
+  }
+));
 
 //route zone
 app.get("/api/getallbooks" , GetAllBook)

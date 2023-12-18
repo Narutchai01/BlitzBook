@@ -33,7 +33,7 @@ export default {
         'Superhero' : "url('/src/assets/images/Superhero.png')",
       }),
       fontFamily: {
-        HomeHeader: ['Kids Magazine'],
+        HomeHeader: ['KidsMagazine'],
         fontNav: ['IMPACT'],
       },
     },

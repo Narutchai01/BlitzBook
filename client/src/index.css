@@ -4,8 +4,8 @@
 
 
 @font-face {
-  font-family: "Kids Magazine";
-  src: local("Kids Magazine"),
+  font-family: "KidsMagazine";
+  src: local("KidsMagazine"),
     url("./assets/font/KidsMagazine/KidsMagazine.ttf") format("truetype");
   font-weight: regular;
 }
