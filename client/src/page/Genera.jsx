@@ -10,7 +10,7 @@ const Genera = () => {
           </h1>
         </div>
       </div>
-      <div className="flex justify-center border-black border-b-2 py-10">
+      <div className="flex justify-center border-black border-b-2 py-10 bg-bgcolor">
         <div className="grid md:grid-cols-3 gap-10 w-full container">
           <Link to="/ShoppingPage/Action-Adventure">
             <div className="md:w-[425.33px] h-[208px] bg-Action-Adventure bg-cover border-4 border-black flex justify-center items-center text-white w-auto max-w-[390px]">

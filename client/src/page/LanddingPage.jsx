@@ -61,7 +61,7 @@ const LanddingPage = () => {
 
       <div className="my-10 bg-hero-pattern2 bg-cover bg-no-repeat h-[400px]"></div>
 
-      <div className="md:h-[731px] h-auto">
+      <div className="md:h-[731px] h-auto bg-bgcolor">
         <div className="h-full flex flex-col justify-center container mx-auto font-semibold">
           <h1 className="text-3xl text-black md:justify-start flex justify-center">Best Saler</h1>
           <div className="grid md:grid-cols-5 gap-10 justify-center">
@@ -69,7 +69,7 @@ const LanddingPage = () => {
           </div>
 
         </div>
-        <div className="border-b-4 border-black"></div>
+        <div className="w-full bg-black h-2"></div>
       </div>
     </>
   );

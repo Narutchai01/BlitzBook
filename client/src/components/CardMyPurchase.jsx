@@ -11,7 +11,7 @@ const CardMyPurchase = ({ purchase }) => {
         return (
           <div
             key={book._id}
-            className="border-2 border-black py-4 px-8 h-auto w-full flex flex-col gap-10"
+            className="border-2 border-black py-4 px-8 h-auto w-full flex flex-col gap-10 bg-white"
           >
             <h1 className="font-semibold text-2xl">{date} {time}</h1>
             {book.book?.map((item) => (

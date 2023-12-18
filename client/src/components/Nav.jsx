@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../App";
 import { axiosInstance } from "../lib/axios";
+import { IoMenuSharp } from "react-icons/io5";
 
 const Nav = () => {
   const Navigate = useNavigate();
@@ -12,6 +13,7 @@ const Nav = () => {
   const role = userInfo?.role || "";
   const [search, setSearch] = useState([]);
   const [searchResult, setSearchResult] = useState("");
+  const [Toggle, setToggle] = useState(false);
 
   // ...
 
@@ -42,7 +44,10 @@ const Nav = () => {
   const ShowSearch = searchBooks(searchResult).map((item) => {
     if (item.title !== undefined) {
       return (
-        <div className="bg-white w-full text-black absolute top-12 rounded-lg" key={item._id}>
+        <div
+          className="bg-white w-full text-black absolute top-12 rounded-lg"
+          key={item._id}
+        >
           <Link to={`/book/${item._id}`}>
             <div className="flex flex-col items-center">
               <p>{item.title}</p>
@@ -54,7 +59,6 @@ const Nav = () => {
   });
 
   // console.log(searchBooks(searchResult).map((item)=>item.title));
-
 
   const haveToken = () => {
     return (
@@ -144,12 +148,12 @@ const Nav = () => {
   return (
     <>
       <div className="sticky top-0 z-50">
-        <nav className="bg-[#C63535] md:h-20 text-white items-center ">
+        <nav className="bg-[#C63535] md:h-20 text-white items-center">
           <div className="h-full container mx-auto px-48">
             <div className="flex w-full justify-between md:flex-row items-center h-full flex-col gap-10">
-                <Link to="/">
-                  <h1 className="text-4xl font-bold font-fontNav">BlitzBook</h1>
-                </Link>
+              <Link to="/">
+                <h1 className="text-4xl font-bold font-fontNav">BlitzBook</h1>
+              </Link>
               <div className="flex flex-col relative">
                 <input
                   type="text"
@@ -165,7 +169,10 @@ const Nav = () => {
         </nav>
         <nav className="bg-[#070B1A] md:h-10 text-white h-auto justify-center">
           <div className="h-full container mx-auto md:px-80">
-            <ul className="flex md:flex-row flex-col h-full items-center justify-between">
+            <button onClick={()=>setToggle(!Toggle)} className="md:hidden">
+              <IoMenuSharp className="text-3xl" />
+            </button>
+            <ul className={Toggle ? "flex md:flex-row flex-col h-full items-center justify-between gap-10 py-10 text-xl" :"hidden lg:flex lg:flex-row lg:justify-between items-center h-full"}>
               <li>
                 <Link to="/">Home</Link>
               </li>

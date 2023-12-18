@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { DataContext } from "../App";
 import { axiosInstance } from "../lib/axios";
 import CardCart from "../components/CardCart";
+import Swal from "sweetalert2";
 
 const CartPage = () => {
   const { userInfo } = useContext(DataContext);
@@ -50,7 +51,13 @@ const CartPage = () => {
       bookID: bookID,
       totalAmout: calculateTotalPrice(),
     };
-    await axiosInstance.post("/api/checkout", data).then(() => {
+    await axiosInstance.post("/api/checkout", data).then( async () => {
+      await Swal.fire({
+  imageUrl: "https://media.discordapp.net/attachments/1069897185812041760/1186076270925193316/004999030098155_20231218_054306.jpg?ex=6591ee9b&is=657f799b&hm=43e6354eb3c5353142eaffb0a6210a5d1be941bb654c05e5a9beb82aebb9aff6&=&format=webp&width=460&height=671",
+  imageHeight: 500,
+  imageWidth :300,
+  imageAlt: "A tall image"
+});
       handleDeleteCheckout(userInfo.id);
       window.location.reload();
     });

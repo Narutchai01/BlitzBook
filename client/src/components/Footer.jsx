@@ -8,7 +8,7 @@ import { TiSocialTwitter } from "react-icons/ti";
 const Footer = () => {
   return (
     <>
-      <footer className="h-[323px]">
+      <footer className=" bg-bgcolor">
         <div className="container mx-auto my-auto py-[159px]">
           <div className="flex md:justify-between flex-col items-center h-full md:flex-row">
             <div className="md:w-[300px] gap-5 flex flex-col ">

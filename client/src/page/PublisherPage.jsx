@@ -10,7 +10,7 @@ const PublisherPage = () => {
           </h1>
         </div>
       </div>
-      <div className="flex justify-center border-black border-b-2 py-10">
+      <div className="flex justify-center border-black border-b-2 py-10 bg-bgcolor">
         <div className="grid md:grid-cols-2 gap-3 ">
           <Link to="ShoppingPage/BOOM!-Studios">
             <div className="bg-BOOMStudios md:w-[647px] h-[323.5px] bg-no-repeat bg-cover bg-center flex justify-center items-center font-HomeHeader text-white border-2 border-black">

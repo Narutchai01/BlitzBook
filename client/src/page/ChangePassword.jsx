@@ -49,7 +49,7 @@ const ChangePassword = () => {
 
   return (
     <>
-      <div className="grid md:grid-cols-[360px_4fr] h-screen border-b-2 border-black">
+      <div className="grid md:grid-cols-[360px_4fr] h-screen border-b-2 border-black bg-bgcolor">
         <SildeBarUser />
         <div className="w-full">
           <div className="px-16 py-8">

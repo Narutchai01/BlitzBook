@@ -27,7 +27,7 @@ const MyPurchasePage = () => {
 
   return (
     <>
-        <div className="grid md:grid-cols-[360px_1fr] min-h-screen border-b-2 border-black">
+        <div className="grid md:grid-cols-[360px_1fr] min-h-screen border-b-2 border-black bg-bgcolor">
           <SildeBarUser />
           <div className="container md:mx-auto md:px-24 mb-10">
             <h1 className="text-3xl font-semibold my-10">My Purchase</h1>
