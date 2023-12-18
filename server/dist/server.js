@@ -70,6 +70,9 @@ const multerMid = (0, multer_1.default)({
 });
 app.use(multerMid.array("file"));
 //rounter
+app.get("/", (req, res) => {
+    res.send("Porject_G");
+});
 app.get("/api/checkToken", CheckTokenController_1.checkToken);
 app.get("/api/getallbooks", GetAllBooks_1.getallBooks);
 // user router
