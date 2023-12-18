@@ -9,7 +9,7 @@ export const ChangePasswordByAdmin = async (req: Request , res: Response ) => {
         const client = await dbConnect();
         const check:any = await client.query(`SELECT * FROM User WHERE _id = ?`, id)
 
-        if (password === null) {
+        if (!password) {
             res.status(400).send({
                 message: "Please fill all of required flield"
             });

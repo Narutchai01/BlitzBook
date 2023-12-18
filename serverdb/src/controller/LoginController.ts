@@ -14,7 +14,11 @@ export const login = async (req:Request , res:Response) => {
 
         const MatchPassword = await matchPassword(password, result[0][0].password); 
         
-        if (result[0] !== null && (!MatchPassword))
+        if (!email || !password) {
+            res.status(400).send({
+                message: "please fill"
+            })
+        } else if (result[0] !== null && (!MatchPassword))
             return res.status(401).send({
                 message: "Email or Password is incorrect"
             })
