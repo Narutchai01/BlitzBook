@@ -24,10 +24,8 @@ export const AddAuthor = async (req: Request , res: Response ) => {
             message: "Add Author successed",
         })
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+      console.log(error);
+       
         
     } 
 }

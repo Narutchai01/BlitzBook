@@ -1,6 +1,5 @@
 import { dbConnect } from '../../lib/mysql';
 import { Request , Response } from 'express';
-import { reportError , getErrorMessage } from '../../lib/Error';
 import { upLoadeIMG, upLoadePDF } from "../../lib/supabase";
 
 export const PostBook = async (req: Request , res: Response ) => {
@@ -57,11 +56,7 @@ export const PostBook = async (req: Request , res: Response ) => {
 
         const checkcom:any = await client.query(`SELECT * FROM Comic WHERE title = "${data.title}"`)
     
-        if (title || author || price || description || publisher || category|| date || dataFile === null ) {
-            res.status(400).send({
-                message: "Please fill all of required field"
-            })
-        } else if (checkcom[0].length > 0) {
+        if (checkcom[0].length > 0) {
             res.status(400).send({
                 message: "Comic already exist"
             })
@@ -81,42 +76,25 @@ export const PostBook = async (req: Request , res: Response ) => {
         const book:any = await client.query(`SELECT _id FROM Comic WHERE title = "${data.title}"`)
     
         //add publsiher to book
-        const findpub:any = await client.query(`SELECT * FROM Publisher WHERE name = "${data.publisher}"`);
-        if (findpub[0].length < 1) {
-            res.status(404).send({
-                message: "Publisher not found"
-            });
-            return false;
-        };
+        const findpub:any = await client.query(`SELECT * FROM Publisher WHERE _id = "${data.publisher}"`);
+        
         await client.query(`INSERT INTO Publisher_Comic SET bookID = ${book[0][0]._id} , publisherID = ${findpub[0][0]._id}`)
         
         // add author to book
-        const findaut:any = await client.query(`SELECT * FROM Author WHERE name = "${data.author}"`)
-        if (findaut[0].length < 1) {
-            res.status(404).send({
-                message: "Author not found"
-            });
-            return false;
-        };
+        const findaut:any = await client.query(`SELECT * FROM Author WHERE _id = "${data.author}"`)
+        
         await client.query(`INSERT INTO Author_Comic SET bookID = ${book[0][0]._id} , authorID = ${findaut[0][0]._id}`)
 
         //add category to book
-        const findcat:any = await client.query(`SELECT * FROM Category WHERE name = "${data.category}"`)
-        if (findcat[0].length < 1) {
-            res.status(404).send({
-                message: "Category not found"
-            });
-            return false;
-        };
+        const findcat:any = await client.query(`SELECT * FROM Category WHERE _id = "${data.category}"`)
+        
         await client.query(`INSERT INTO Category_Comic SET bookID = ${book[0][0]._id} , categoryID = ${findcat[0][0]._id}`)
 
         const result:any = await client.query(`SELECT * FROM ComicBook WHERE _id = ${book[0][0]._id}`)
         res.status(200).send(result[0])
             
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+        console.log(error);
+        
     } 
 }

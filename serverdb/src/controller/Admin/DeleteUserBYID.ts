@@ -19,9 +19,7 @@ export const DeleteUserByID = async (req: Request , res: Response ) => {
             message: "Delete user successed",
         })
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+      console.log(error);
+       
     } 
 }

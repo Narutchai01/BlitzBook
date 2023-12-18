@@ -30,9 +30,9 @@ import { PostBook } from "./controller/Admin/PostBook";
 import { GetMyCollection } from "./controller/GetMyCollection";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
-
+import  {DeleteBookinCart , DeleteBookinCartForCheckout} from "./controller/DeleteBookinCart";
 import { test } from "./controller/test";
+import { CheckoutController } from "./controller/CheckoutController";
 
 
 //define zone
@@ -70,7 +70,7 @@ app.get("/api/getallbooks" , GetAllBook)
 //User
 app.post("/api/signup" , signup)
 app.post("/api/login" , login)
-app.post("/api/logout" , logout)
+app.get("/api/logout" , logout)
 app.post("/api/addToCart" , auth,AddtoCart)
 app.put("/api/changepassword" , auth , changePassword)
 app.get("/api/MyPurchase" , MyPurchase)
@@ -80,10 +80,13 @@ app.get("/api/getBookinCart" , GetBookInCart)
 app.get("/api/getBestSaler", BestSaler);
 app.get("/api/getNewReleases", NewRelease);
 app.get("/api/getCollection", GetMyCollection);
+app.delete("/api/deleteBookinCart",DeleteBookinCart)    
+app.delete("/api/deleteBookinCartForCheckout",DeleteBookinCartForCheckout)
+app.post("/api/checkout",CheckoutController)
 
 //Admin
 app.post("/api/addAuthor" , AddAuthor)
-app.post("/api/addCategory" , AddCategory)
+app.post("/api/addCatagory" , AddCategory)
 app.post("/api/addPublisher" , AddPublisher)
 app.post("/api/postbook" , PostBook)
 app.put("/api/changepasswordbyadmin" , ChangePasswordByAdmin)

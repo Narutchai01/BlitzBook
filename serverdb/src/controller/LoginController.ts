@@ -25,9 +25,10 @@ export const login = async (req:Request , res:Response) => {
             return res.status(401).send({
                 message: "Email or Password is incorrect"
         })
-        const id = result[0][0]._id  
-        const role = result[0][0].role
-        const payload = {id , role}
+        const payload = {
+            id: String(result[0][0]._id), 
+            role: String(result[0][0].role)
+        }
         
         const token = jwt.sign(payload, secret, { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true })

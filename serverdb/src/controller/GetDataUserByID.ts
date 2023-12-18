@@ -1,6 +1,5 @@
 import { dbConnect } from '../lib/mysql';
 import { Request , Response } from 'express';
-import { reportError , getErrorMessage } from '../lib/Error';
 
 export const GetDataUserByID = async (req: Request , res: Response ) => {
     try {
@@ -13,12 +12,11 @@ export const GetDataUserByID = async (req: Request , res: Response ) => {
             })
         }
         const User = result[0]
-        return res.status(200).send({
-            User
-        })
+        return res.status(200).send(
+            User[0]
+        )
     } catch (error) {
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+      console.log(error);
+       
     } 
 }

@@ -143,7 +143,7 @@ const ManageMentAuthor = () => {
                 </div>
                 <button type="submit">add Category</button>
               </form>
-              <form onSubmit={addSeries}>
+              {/* <form onSubmit={addSeries}>
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2">
                     addd Series
@@ -156,7 +156,7 @@ const ManageMentAuthor = () => {
                   />
                 </div>
                 <button type="submit">add Series</button>
-              </form>
+              </form> */}
             </div>
             <div>
               <div className="">
@@ -179,12 +179,12 @@ const ManageMentAuthor = () => {
                   <CardWritter data={Category} type={"Category"} />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <h1>Series</h1>
                 <div className="grid grid-cols-5 gap-5 w-full">
                   <CardWritter data={Series} type={"Series"} />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -9,9 +9,7 @@ export const GetAllBook = async (req: Request , res: Response ) => {
         const book = result[0]
         return res.status(200).send(book)
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+       console.log(error);
+        
     } 
 }

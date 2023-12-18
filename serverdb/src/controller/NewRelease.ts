@@ -7,12 +7,11 @@ export const NewRelease = async (req: Request , res: Response ) => {
         const client = await dbConnect();
         const result = await client.query(`SELECT * FROM ComicBook ORDER BY _id DESC`)
         const newrelease = result[0]
-        return res.status(200).send({
+        return res.status(200).send(
             newrelease
-        })
+        )
     } catch (error) {
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+        console.log(error);
+        
     } 
 }

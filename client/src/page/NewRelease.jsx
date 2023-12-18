@@ -95,7 +95,7 @@ useEffect(() => {
   });
 
 
-  console.log(filterArr);
+  // console.log(filterArr);
 
   return (
     <>

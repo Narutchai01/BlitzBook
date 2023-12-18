@@ -19,9 +19,7 @@ export const DeleteBookByID = async (req: Request , res: Response ) => {
             message: "Delete book successed",
         })
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        }); 
+       console.log(error);
+        
     } 
 }

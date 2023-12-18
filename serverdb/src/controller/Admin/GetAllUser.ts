@@ -9,9 +9,7 @@ export const GetAllUser = async (req: Request , res: Response ) => {
         const user = result[0]
         return res.status(200).send(user)
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+       console.log(error);
+       
     } 
 }

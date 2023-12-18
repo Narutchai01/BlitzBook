@@ -1,24 +1,24 @@
-import { dbConnect } from '../lib/mysql';
-import { Request , Response } from 'express';
-import { reportError , getErrorMessage } from '../lib/Error';
+import { dbConnect } from "../lib/mysql";
+import { Request, Response } from "express";
 
-export const GetBookInCart = async (req: Request , res: Response ) => {
+export const GetBookInCart = async (req: Request, res: Response) => {
     try {
-        const { id } = req.query;
+        const { userID } = req.query;
         const client = await dbConnect();
-        const result:any = await client.query(`select ComicBook._id _id , title , author , publisher , category , price , description , image , pdf , sales , date
-        from ComicBook join Cart on ComicBook._id = Cart.bookID WHERE userID = ?`, id)
-        if (result[0].length < 1){
-            res.status(404).send({
-                message: "No comic in cart"
-            })
-        }
-        const cart = result[0]
-        return res.status(200).send(cart)
+        const result: any = await client.query(`select Cart._id _id ,Cart.userID userID , ComicBook._id bookID , title bookName, author , publisher publisherName , category , price bookPrice , description , image bookImage, pdf , sales , date from ComicBook join Cart on ComicBook._id = Cart.bookID WHERE userID = ?`, userID);
+
+        const matching = result[0].map((item: any) => {
+            return {
+                _id: String(item._id),
+                userID: String(item.userID),
+                bookID: String(item.bookID),
+                bookName: String(item.bookName),
+                bookPrice: String(item.bookPrice),
+                bookImage: String(item.bookImage),
+                publisherName: String(item.publisherName),
+            }})
+        return res.status(200).send({message: "Get book in cart", matching });
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
-    } 
-}
+        console.log(error);
+    }
+};

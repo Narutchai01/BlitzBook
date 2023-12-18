@@ -11,7 +11,7 @@ export const signup = async (req: Request, res: Response) => {
       fname,
       lname,
       username,
-      date: date || "curdate()",
+      date: date || "datepart()",
       email,
       password: await hashPassword(password),
       role: role || "user",

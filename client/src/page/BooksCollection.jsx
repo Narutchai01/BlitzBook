@@ -21,7 +21,7 @@ const BooksCollection = () => {
       }
     };
     fetchBooks();
-  }, [userInfo]);
+  }, [userInfo.id]);
 
   console.log(books);
 
