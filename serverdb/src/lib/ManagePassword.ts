@@ -3,8 +3,8 @@ import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
 // Check if the given password matches the given hash.
-export const matchPassword = async (password: string, hash: Array<string>) => {
-    const isMatch = await bcrypt.compare(password, hash[0][0]);
+export const matchPassword = async (password: string, hash: string) => {
+    const isMatch = await bcrypt.compare(password, hash);
     return isMatch;
 };
 

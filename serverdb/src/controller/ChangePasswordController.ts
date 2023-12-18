@@ -7,21 +7,34 @@ export const changePassword =async (req: Request, res:Response) => {
     try {
         const { id , password , newpassword } = req.body;
         const client = await dbConnect();
-        const result:any = await client.query(`SELECT * FROM User WHERE ._id = ? ` , id);
-        const user = result[0][0];
-        if (user === null) {
-            return res.status(400).send("User not found");
+        const result:any = await client.query(`SELECT * FROM User WHERE _id = ? ` , id);
+        
+        if (id || password || newpassword === null) {
+            res.status(400).send({
+                message: "Please fill all of required field"
+            })
+        } else if (result[0][0] < 1) {
+            return res.status(400).send({
+                message: "User not found"
+            });
         }
-        const match = await matchPassword(password, result.password);
+        const match = await matchPassword(password, result[0][0].password);
+        
         if (!match) {
-            return res.status(400).send("Wrong password");
+            return res.status(400).send({
+                message: "Invalid password"
+            });
         }
         const hash = await hashPassword(newpassword);
-        const newpass = await client.query(`UPDATE User SET password = ? WHERE ._id = ?`, { hash , id });
-        res.status(200).send("Change password successed");
+        const newpass = await client.query(`UPDATE User SET password = "${hash}" WHERE _id = ${id}`);
+        res.status(200).send({
+            message: "Change password successed"
+        });
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-            
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        });    
     }
 }
 

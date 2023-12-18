@@ -1,9 +1,11 @@
 import mysql from 'mysql2';
+import { Connection, FieldPacket, QueryError, ResultSetHeader, RowDataPacket } from 'mysql2';
 import { config }  from './config';
+import { query } from 'express';
 
 const dbConnect = () => {
     const pool = mysql
-      .createPool({
+      .createConnection({
         host: config.RDS_HOSTNAME,
         user: config.RDS_USERNAME,
         password: config.RDS_PASSWORD,
