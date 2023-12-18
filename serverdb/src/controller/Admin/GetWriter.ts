@@ -10,9 +10,7 @@ export const GetWriter = async (req: Request , res: Response ) => {
         
         
         const table = result[0]
-        return res.status(200).send({
-            table
-        })
+        return res.status(200).send(table)
     } catch (error) {
         reportError({message: getErrorMessage(error)})
         res.status(500).send({
