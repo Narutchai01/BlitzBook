@@ -9,7 +9,6 @@ export const AddtoCart = async (req: Request , res: Response ) => {
         const client = await dbConnect();
         const check:any = await client.query(`SELECT * FROM Cart WHERE userID = ${userID} AND bookID = ${bookID}`)
         
-        
         if (check[0].length > 0) {
             res.status(400).send({
                 message: "Comic already in cart"
@@ -22,7 +21,8 @@ export const AddtoCart = async (req: Request , res: Response ) => {
         })
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        res.status(500).send("Error occurred while processing data");
-        
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        });
     } 
 }

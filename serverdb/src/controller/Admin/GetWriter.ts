@@ -7,13 +7,16 @@ export const GetWriter = async (req: Request , res: Response ) => {
         const { writer } = req.params;
         const client = await dbConnect();
         const result:any = await client.query(`SELECT * FROM ${writer}`)
+        
+        
         const table = result[0]
         return res.status(200).send({
             table
         })
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        res.status(500).send("Error occurred while processing data");
-        
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        });
     } 
 }

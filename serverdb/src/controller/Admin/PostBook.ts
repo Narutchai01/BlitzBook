@@ -57,8 +57,11 @@ export const PostBook = async (req: Request , res: Response ) => {
 
         const checkcom:any = await client.query(`SELECT * FROM Comic WHERE title = "${data.title}"`)
     
-        
-        if (checkcom[0].length > 0) {
+        if (title || author || price || description || publisher || category|| date || dataFile === null ) {
+            res.status(400).send({
+                message: "Please fill all of required field"
+            })
+        } else if (checkcom[0].length > 0) {
             res.status(400).send({
                 message: "Comic already exist"
             })
@@ -112,7 +115,8 @@ export const PostBook = async (req: Request , res: Response ) => {
             
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        res.status(500).send("Error occurred while processing data");
-        
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        });
     } 
 }

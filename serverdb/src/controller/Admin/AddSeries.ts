@@ -16,6 +16,8 @@ export const AddSeries = async (req: Request , res: Response ) => {
         })
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        res.status(500).send("Error occurred while processing data");
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        });
     } 
 }

@@ -8,7 +8,12 @@ export const changePassword =async (req: Request, res:Response) => {
         const { id , password , newpassword } = req.body;
         const client = await dbConnect();
         const result:any = await client.query(`SELECT * FROM User WHERE _id = ? ` , id);
-        if (result[0][0] < 1) {
+        
+        if (id || password || newpassword === null) {
+            res.status(400).send({
+                message: "Please fill all of required field"
+            })
+        } else if (result[0][0] < 1) {
             return res.status(400).send({
                 message: "User not found"
             });
@@ -27,8 +32,9 @@ export const changePassword =async (req: Request, res:Response) => {
         });
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        res.status(500).send("Error occurred while processing data");
-            
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        });    
     }
 }
 

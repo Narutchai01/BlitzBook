@@ -1,5 +1,5 @@
 import { dbConnect } from '../../lib/mysql';
-import { Request , Response } from 'express';
+import e, { Request , Response } from 'express';
 import { reportError , getErrorMessage } from '../../lib/Error';
 
 export const ChangePasswordByAdmin = async (req: Request , res: Response ) => {
@@ -9,7 +9,11 @@ export const ChangePasswordByAdmin = async (req: Request , res: Response ) => {
         const client = await dbConnect();
         const check:any = await client.query(`SELECT * FROM User WHERE _id = ?`, id)
 
-        if (check[0].length < 1) {
+        if (password === null) {
+            res.status(400).send({
+                message: "Please fill all of required flield"
+            });
+        } else if (check[0].length < 1) {
             res.status(400).send({
                 message: "User not found"
             })
@@ -21,7 +25,8 @@ export const ChangePasswordByAdmin = async (req: Request , res: Response ) => {
         })
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        res.status(500).send("Error occurred while processing data");
-        
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        });
     } 
 }

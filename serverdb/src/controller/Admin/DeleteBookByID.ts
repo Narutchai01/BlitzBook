@@ -8,7 +8,7 @@ export const DeleteBookByID = async (req: Request , res: Response ) => {
         const client = await dbConnect();
         const check:any = await client.query(`SELECT * FROM Comic WHERE _id = ?` , id)
         
-        if (check[0].length < 1) {
+        if (check[0].length < 1 ) {
             res.status(404).send({
                 message: "Comic not found"
             });
@@ -20,7 +20,8 @@ export const DeleteBookByID = async (req: Request , res: Response ) => {
         })
     } catch (error) {
         reportError({message: getErrorMessage(error)})
-        res.status(500).send("Error occurred while processing data");
-        
+        res.status(500).send({
+            meassage: "Error occurred while processing data"
+        }); 
     } 
 }

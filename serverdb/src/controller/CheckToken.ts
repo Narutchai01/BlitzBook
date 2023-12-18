@@ -11,6 +11,8 @@ export const checkToken = async (req: Request, res: Response) => {
     const decode = jwt.verify(token, secret);
     res.status(200).send({ message: "have token", token: decode });
   } catch (error) {
-    res.status(500).send({ message: "Something went wrong" });
+    res.status(500).send({
+      meassage: "Error occurred while processing data"
+  });
   }
 };
