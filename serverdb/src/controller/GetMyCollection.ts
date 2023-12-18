@@ -23,9 +23,7 @@ export const GetMyCollection = async (req: Request , res: Response ) => {
             })
         }
         const MyCollection = result[0]
-        return res.status(200).send({
-            MyCollection
-        })
+        return res.status(200).send(MyCollection)
     } catch (error) {
         reportError({message: getErrorMessage(error)})
         res.status(500).send({

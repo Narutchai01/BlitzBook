@@ -13,9 +13,7 @@ export const GetBookByID = async (req: Request , res: Response ) => {
             })
         }
         const bookbyid = result[0][0]
-        return res.status(200).send({
-            bookbyid
-        })
+        return res.status(200).send(bookbyid)
     } catch (error) {
         reportError({message: getErrorMessage(error)})
         res.status(500).send({

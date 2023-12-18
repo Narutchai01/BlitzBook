@@ -111,7 +111,7 @@ export const PostBook = async (req: Request , res: Response ) => {
         await client.query(`INSERT INTO Category_Comic SET bookID = ${book[0][0]._id} , categoryID = ${findcat[0][0]._id}`)
 
         const result:any = await client.query(`SELECT * FROM ComicBook WHERE _id = ${book[0][0]._id}`)
-        res.send(result[0])
+        res.status(200).send(result[0])
             
     } catch (error) {
         reportError({message: getErrorMessage(error)})

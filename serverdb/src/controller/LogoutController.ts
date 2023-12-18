@@ -6,6 +6,5 @@ export const logout = (req:Request, res:Response) => {
         res.status(200).json({message : 'logout'});
     } catch (error) {
         console.log(error);
-        
     }
 };
