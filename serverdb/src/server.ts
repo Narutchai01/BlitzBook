@@ -28,6 +28,7 @@ import { auth } from "./middleware/auth";
 import { BestSaler } from "./controller/BestSaler";
 import { PostBook } from "./controller/Admin/PostBook";
 import { GetMyCollection } from "./controller/GetMyCollection";
+import cors from "cors";
 
 
 
@@ -38,6 +39,13 @@ import { test } from "./controller/test";
 const PORT = config.port;
 const app = express();
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173" || config.origin,
+    credentials: true,
+  })
+);
 
 const multerMid = multer({
   storage: multer.memoryStorage(),
