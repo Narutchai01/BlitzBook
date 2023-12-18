@@ -13,11 +13,10 @@ export const GetDataUserByID = async (req: Request , res: Response ) => {
             })
         }
         const User = result[0]
-        return res.status(200).send({
+        return res.status(200).send(
             User
-        })
+)
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
         res.status(500).send({
             meassage: "Error occurred while processing data"
         });

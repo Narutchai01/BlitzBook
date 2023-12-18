@@ -80,7 +80,6 @@ const SignUp = () => {
     }
   };
 
-  console.log(user);
   return (
     <>
       {/* <Layout> */}

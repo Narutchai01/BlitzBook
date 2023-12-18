@@ -2,11 +2,10 @@ import { Request , Response, query } from "express";
 import { dbConnect } from "../lib/mysql";
 import { matchPassword } from "../lib/ManagePassword";
 import { getErrorMessage , reportError } from "../lib/Error";
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken"; // Added missing import statement
 import { secret } from "../server";
 
 export const login = async (req:Request , res:Response) => {
-
     try {
         const client = dbConnect();
         const { email , password } = req.body;
@@ -28,14 +27,14 @@ export const login = async (req:Request , res:Response) => {
         })
         const id = result[0][0]._id  
         const role = result[0][0].role
+        const payload = {id , role}
         
-        const token = jwt.sign({id , role}, secret, { expiresIn: '1h' });
+        const token = jwt.sign(payload, secret, { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true })
-        res.send({message:"login success"})
+        res.send({message:"login success", result: result[0][0]})
+        res.status(200).send(email)
     } catch (error) {
-        reportError({message: getErrorMessage(error)})
-        res.status(500).send({
-            meassage: "Error occurred while processing data"
-        });
+        console.log(error);
+        ;
     }
 }

@@ -29,7 +29,7 @@ import { BestSaler } from "./controller/BestSaler";
 import { PostBook } from "./controller/Admin/PostBook";
 import { GetMyCollection } from "./controller/GetMyCollection";
 import cors from "cors";
-
+import cookieParser from "cookie-parser";
 
 
 import { test } from "./controller/test";
@@ -39,7 +39,7 @@ import { test } from "./controller/test";
 const PORT = config.port;
 const app = express();
 app.use(express.json());
-
+app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:5173" || config.origin,
@@ -69,7 +69,7 @@ app.get("/api/getallbooks" , GetAllBook)
 
 //User
 app.post("/api/signup" , signup)
-app.post("/api/login" , login)
+app.get("/api/login" , login)
 app.post("/api/logout" , logout)
 app.post("/api/addToCart" , auth,AddtoCart)
 app.put("/api/changepassword" , auth , changePassword)
