@@ -14,9 +14,7 @@ export const GetBookInCart = async (req: Request , res: Response ) => {
             })
         }
         const cart = result[0]
-        return res.status(200).send({
-            cart
-        })
+        return res.status(200).send(cart)
     } catch (error) {
         reportError({message: getErrorMessage(error)})
         res.status(500).send({

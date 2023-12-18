@@ -69,7 +69,7 @@ app.get("/api/getallbooks" , GetAllBook)
 
 //User
 app.post("/api/signup" , signup)
-app.get("/api/login" , login)
+app.post("/api/login" , login)
 app.post("/api/logout" , logout)
 app.post("/api/addToCart" , auth,AddtoCart)
 app.put("/api/changepassword" , auth , changePassword)

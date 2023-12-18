@@ -7,9 +7,7 @@ export const GetAllUser = async (req: Request , res: Response ) => {
         const client = await dbConnect();
         const result = await client.query(`SELECT * FROM User`)
         const user = result[0]
-        return res.status(200).send({
-            user
-        })
+        return res.status(200).send(user)
     } catch (error) {
         reportError({message: getErrorMessage(error)})
         res.status(500).send({

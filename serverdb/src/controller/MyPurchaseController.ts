@@ -29,9 +29,7 @@ import { reportError , getErrorMessage } from '../lib/Error';
                 })
             }
             const transaction = result[0]
-            return res.status(200).send({
-                transaction
-            })
+            return res.status(200).send(transaction)
         } catch (error) {
             reportError({message: getErrorMessage(error)})
             res.status(500).send({
