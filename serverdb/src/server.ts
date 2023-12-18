@@ -27,6 +27,7 @@ import { NewRelease } from "./controller/NewRelease";
 import { auth } from "./middleware/auth";
 import { BestSaler } from "./controller/BestSaler";
 import { PostBook } from "./controller/Admin/PostBook";
+import { GetMyCollection } from "./controller/GetMyCollection";
 
 
 
@@ -63,7 +64,7 @@ app.get("/api/getBookByID/:id" , GetBookByID)
 app.get("/api/getBookinCart" , GetBookInCart)
 app.get("/api/getBestSaler", BestSaler);
 app.get("/api/getNewReleases", NewRelease);
-
+app.get("/api/getCollection", GetMyCollection);
 
 //Admin
 app.post("/api/addAuthor" , AddAuthor)
@@ -79,7 +80,7 @@ app.delete("/api/deleteWriter/:type/:id" , DeleteWriter)
 app.delete("/api/deletebook/:id" , DeleteBookByID)
 
 
-app.post("/api/test" , test)
+app.get("/api/test" , test)
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`)

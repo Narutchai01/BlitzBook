@@ -21,7 +21,7 @@ import { reportError , getErrorMessage } from '../lib/Error';
             'publisher', ComicBook.publisher , 'Category' ,ComicBook.Category , 'price', ComicBook.price ,
             'description', ComicBook.description , 'image', ComicBook.image , 'pdf', ComicBook.pdf , 'sales', ComicBook.sales , 'date' , ComicBook.date
             )), ']') AS books
-            from ComicBook join Transaction on ComicBook._id = Transaction.bookID where userID = ?` , userID)
+            from ComicBook join Transaction on ComicBook._id = Transaction.bookID where userID = ? and Transaction._id = Transaction._id` , userID)
             
             if (result[0].length < 1) {
                 res.status(404).send({
@@ -34,6 +34,7 @@ import { reportError , getErrorMessage } from '../lib/Error';
             })
         } catch (error) {
             reportError({message: getErrorMessage(error)})
+            res.status(500).send("Error occurred while processing data");
             
         } 
 } 

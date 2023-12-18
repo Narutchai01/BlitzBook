@@ -30,6 +30,7 @@ export const login = async (req:Request , res:Response) => {
         res.send({message:"login success"})
     } catch (error) {
         reportError({message: getErrorMessage(error)})
+        res.status(500).send("Error occurred while processing data");
     }
 
 }
