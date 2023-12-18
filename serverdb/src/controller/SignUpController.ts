@@ -19,7 +19,7 @@ export const signup = async (req: Request , res: Response) => {
             role: role || "user",
         }
         
-        if (fname || lname || username || date || email || password || role === null) {
+        if (!fname || !lname || !username || !email || !password ) {
             res.status(400).send({
                 message: "Please fill all of required field"
             })
