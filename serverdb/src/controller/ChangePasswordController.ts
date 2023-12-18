@@ -9,7 +9,7 @@ export const changePassword =async (req: Request, res:Response) => {
         const client = await dbConnect();
         const result:any = await client.query(`SELECT * FROM User WHERE _id = ? ` , id);
         
-        if (id || password || newpassword === null) {
+        if (!id || !password || !newpassword) {
             res.status(400).send({
                 message: "Please fill all of required field"
             })
