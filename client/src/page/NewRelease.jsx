@@ -1,16 +1,18 @@
 import Carditem from "../components/Carditem";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../lib/axios";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom";
+import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 const NewRelease = () => {
-
-
-  const {filter} = useParams();
+  const { filter } = useParams();
   const [book, setBook] = useState([]);
   const [Publisher, setPublisher] = useState([]);
   const [Category, setCategory] = useState([]);
   const [filterArr, setFilterArr] = useState([]);
+  const [showPublisher, setShowPublisher] = useState(false);
+  const [showCategory, setShowCategory] = useState(false);
 
   useEffect(() => {
     axiosInstance.get("/api/getNewReleases").then((res) => {
@@ -24,30 +26,27 @@ const NewRelease = () => {
     });
   }, []);
 
+  const [isPushed, setIsPushed] = useState(false);
 
-const [isPushed, setIsPushed] = useState(false);
-
-useEffect(() => {
-  if (!isPushed) {
-    if (filter === "newrelease" || filter === "bestsaler") {
-      Publisher.map((item) => {
-        filterArr.push(item.name);
-      });
-    } else if (
-      Publisher.map((item)=>{
-        filter === item.name
-      }) ||
-      Category.map((item)=>{
-        filter === item.name
-      })
-    ) {
-      filterArr.push(filter);
+  useEffect(() => {
+    if (!isPushed) {
+      if (filter === "newrelease" || filter === "bestsaler") {
+        Publisher.map((item) => {
+          filterArr.push(item.name);
+        });
+      } else if (
+        Publisher.map((item) => {
+          filter === item.name;
+        }) ||
+        Category.map((item) => {
+          filter === item.name;
+        })
+      ) {
+        filterArr.push(filter);
+      }
+      // setIsPushed(true);
     }
-    // setIsPushed(true);
-  }
-}, [Publisher, filter, filterArr, isPushed ,Category]);
-
-
+  }, [Publisher, filter, filterArr, isPushed, Category]);
 
   const handleCheckBox = (e) => {
     if (e.target.checked) {
@@ -66,7 +65,7 @@ useEffect(() => {
 
   const checkBoxPublisher = Publisher.map((item, index) => {
     return (
-      <div className="flex items-center" key={index}>
+      <div className="text-lg font-semibold gap-y-10 px-5" key={index}>
         <input
           type="checkbox"
           name="publisher"
@@ -74,14 +73,14 @@ useEffect(() => {
           className="mr-2"
           onChange={handleCheckBox}
         />
-        <label>{item.name}</label>
+        <label className="w-full">{item.name}</label>
       </div>
     );
   });
 
   const checkBoxCategory = Category.map((item, index) => {
     return (
-      <div className="flex items-center" key={index}>
+      <div className="text-lg font-semibold gap-y-10 px-5" key={index}>
         <input
           type="checkbox"
           name="category"
@@ -89,13 +88,10 @@ useEffect(() => {
           className="mr-2"
           onChange={handleCheckBox}
         />
-        <label>{item.name}</label>
+        <label className="w-full">{item.name}</label>
       </div>
     );
   });
-
-
-  // console.log(filterArr);
 
   return (
     <>
@@ -107,16 +103,33 @@ useEffect(() => {
         </div>
       </div>
       <div className="grid md:grid-cols-[360px_1fr] border-b-2 border-black h-auto my-10 bg-bgcolor">
-        <div className="h-full">
-          <div className="h-auto bg-yellow md:w-[288px] border-black border-4 sticky z-10 top-1">
-            <div>
-              <h1 className="text-3xl text-center font-bold text-black my-5">
-                Publisher
-              </h1>
-              {checkBoxPublisher}
+        <div className="h-full px-5">
+          <div className="h-auto bg-yellow md:w-[288px] border-black border-4 sticky z-10 top-1 py-4 px-2">
+            <div className="gap-x-10 ">
+              <div className="flex h-full items-center gap-x-10">
+                <h1 className="text-xl font-bold text-primary">Publisher</h1>
+                <div
+                  className="text-3xl"
+                  onClick={() => setShowPublisher(!showPublisher)}
+                >
+                  {showPublisher ? <IoIosArrowDown /> : <IoIosArrowUp />}
+                </div>
+              </div>
+              <div>{showPublisher ? checkBoxPublisher : null}</div>
             </div>
-            <h1>Category</h1>
-            {checkBoxCategory}
+
+            <div className="gap-x-10 ">
+              <div className="flex h-full items-center gap-x-10">
+                <h1 className="text-xl font-bold text-primary">Category</h1>
+                <div
+                  className="text-3xl"
+                  onClick={() => setShowCategory(!showCategory)}
+                >
+                  {showCategory ? <IoIosArrowDown /> : <IoIosArrowUp />}
+                </div>
+              </div>
+              {showCategory ? checkBoxCategory : null}
+            </div>
           </div>
         </div>
         <div className="grid md:grid-cols-4 gap-7 mb-10 justify-center">

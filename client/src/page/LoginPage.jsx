@@ -24,7 +24,7 @@ const LoginPage = () => {
         .then((res) => {
           console.log(res.data.result.role);
           if (res.data.result.role === "admin") {
-            navigate("/admin/dashboard");
+            navigate("/admin/managementBooks");
             window.location.reload();
           } else {
             navigate("/");

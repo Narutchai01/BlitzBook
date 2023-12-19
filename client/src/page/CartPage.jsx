@@ -67,7 +67,7 @@ const CartPage = () => {
 
   return (
     <>
-      <div className="border-b-2 border-black md:min-h-[508px] h-auto">
+      <div className="md:min-h-[508px] h-auto">
         <div className="grid md:grid-cols-[3fr_1fr] h-auto mx-auto px-11 container">
           <div className=" my-8 flex flex-col gap-12 justify-center">
             <h1 className="font-semibold text-2xl">Shopping Cart</h1>

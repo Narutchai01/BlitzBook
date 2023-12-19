@@ -95,9 +95,9 @@ const ManageMentAuthor = () => {
 
   return (
     <>
-      <div className="flex w-screen h-full">
+      <div className="grid grid-cols-[360px_1fr]">
         <SideBarAdmin />
-        <div className="w-screen">
+        <div className="">
           <h1 className=" font-bold text-4xl my-10">Management Writter</h1>
           <div className="h-full flex flex-col gap-10 p-10">
             <div className="flex justify-center">

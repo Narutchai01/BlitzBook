@@ -5,7 +5,7 @@ import LoginPage from "./page/LoginPage";
 import SignUp from "./page/SignUp";
 import LanddingPage from "./page/LanddingPage";
 import Bookpage from "./page/Bookpage";
-import AdminPage from "./page/admin/AdminPage";
+// import AdminPage from "./page/admin/AdminPage";
 import AccountPage from "./page/AccountPage";
 import Layout from "./components/Layout";
 import { createContext, useEffect, useState } from "react";
@@ -18,7 +18,6 @@ import CartPage from "./page/CartPage";
 import BooksCollection from "./page/BooksCollection";
 import ChangePassword from "./page/ChangePassword";
 import MyPurchasePage from "./page/MyPurchasePage";
-import AllBookPage from "./page/AllBookPage";
 import PublisherPage from "./page/PublisherPage";
 import Genera from "./page/Genera";
 import NewRelease from "./page/NewRelease";
@@ -68,10 +67,9 @@ function App() {
             <Route path="/admin/managementBooks" element={<ManagementBooks />} />
             <Route path="/Cart" element={<CartPage/>} />
             <Route path="/admin/managementAuthors" element={<ManageMentAuthor />} />
-            <Route path="/Account/BooksCollection" element={<BooksCollection/>} />
             <Route path="/Account/changepassword" element={<ChangePassword />} />
+            <Route path="/Account/BooksCollection" element={<BooksCollection/>} />
             <Route path="/Account/MyPurchase" element={<MyPurchasePage />} />
-            <Route path="/All" element={<AllBookPage/>}/>
             <Route path="/publisher" element={<PublisherPage/>}/>
             <Route path="/genre" element={<Genera/>}/>
             <Route path="/ShoppingPage/:filter" element={<NewRelease/>}/>

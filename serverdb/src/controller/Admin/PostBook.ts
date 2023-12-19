@@ -61,7 +61,7 @@ export const PostBook = async (req: Request , res: Response ) => {
                 message: "Comic already exist"
             })
             return false;
-        } else if (data.description.length > 255) {
+        } else if (data.description.length > 750) {
             res.status(400).send({
                 message: "Description too long"
             })

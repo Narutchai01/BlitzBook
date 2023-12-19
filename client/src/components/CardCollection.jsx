@@ -13,9 +13,9 @@ const CardCollection = ({ data }) => {
            
           >
             <div className="">
-              <img src={item.bookImage} alt="" className="w-full" />
+              <img src={item.bookImage} alt="" className="aspect-[2/3] object-cover" />
             </div>
-            <div className="h-full">
+            <div className="h-full p-[12px]">
               <h1 className="line-clamp-[2]">{item.bookName}</h1>
             </div>
           </a>

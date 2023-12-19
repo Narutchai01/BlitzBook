@@ -46,7 +46,7 @@ const Carditem = ({ data }) => {
                     addtocart(item._id);
                   }}
                 >
-                  <h1>
+                  <h1 className="rounded-full hover:bg-secondary p-2">
                     <MdAddShoppingCart />
                   </h1>
                 </button>

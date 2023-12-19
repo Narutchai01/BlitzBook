@@ -22,6 +22,7 @@ export const GetBookByID = async (req: Request, res: Response) => {
             description: book.description,
             image: book.image,
             price: book.price,
+            date : book.date,
             authorObj: [
                 {
                     _id: book.authorID,

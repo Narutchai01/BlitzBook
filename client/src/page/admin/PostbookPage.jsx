@@ -119,9 +119,9 @@ const PostbookPage = () => {
 
   return (
     <>
-      <div className="flex w-screen h-auto">
+      <div className="grid grid-cols-[360px_1fr] h-auto">
         <SideBarAdmin />
-        <div className="w-screen flex justify-center items-center">
+        <div className=" flex justify-center items-center">
           <form className="flex gap-10 flex-col">
             <div className="form-input-book">
               <label>Title Book</label>
@@ -163,7 +163,7 @@ const PostbookPage = () => {
               </select>
             </div>
             <div className="form-input-book">
-              <label>Title Book</label>
+              <label>Description</label>
               <input
                 type="text"
                 name="description"
