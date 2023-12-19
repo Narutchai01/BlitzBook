@@ -11,7 +11,7 @@ const dbConnect = () => {
         password: config.RDS_PASSWORD,
         port: config.RDS_PORT,
         database:config.RDS_DB_NAME,
-        waitForConnections: true,
+        // waitForConnections: true,
         // connectionLimit: 10,
         // queueLimit: 0
       })
