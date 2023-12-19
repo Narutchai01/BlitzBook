@@ -129,7 +129,7 @@ const Nav = () => {
 
   const noToken = () => {
     return (
-      <div className="flex gap-5 h-full items-center">
+      <div className="flex gap-5 h-full items-center font-semibold">
         <Link to="/login">
           <div className="flex flex-col items-center">
             <p>Login</p>
