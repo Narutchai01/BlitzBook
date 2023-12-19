@@ -1,5 +1,0 @@
-services:
-  - name: project_G
-    type: web
-    buildCommand: npm run build
-    startCommand: npm start
