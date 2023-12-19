@@ -174,22 +174,22 @@ const Nav = () => {
             </button>
             <ul className={Toggle ? "flex md:flex-row flex-col h-full items-center justify-between gap-10 py-10 text-xl" :"hidden lg:flex lg:flex-row lg:justify-between items-center h-full"}>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" className="link-highlight">Home</Link>
               </li>
               <li>
-                <Link to="/ShoppingPage/newrelease">New Release</Link>
+                <Link to="/ShoppingPage/newrelease" className="link-highlight">New Release</Link>
               </li>
               <li>
-                <Link to="/ShoppingPage/bestsaler">BestSeller</Link>
+                <Link to="/ShoppingPage/bestsaler" className="link-highlight">BestSeller</Link>
               </li>
               <li>
-                <Link to="/genre">Genea</Link>
+                <Link to="/genre" className="link-highlight">Genre</Link>
               </li>
               <li>
-                <Link to="/publisher">Publisher</Link>
+                <Link to="/publisher" className="link-highlight">Publisher</Link>
               </li>
               <li>
-                <Link to="/Account/BooksCollection">BooksCollection</Link>
+                <Link to="/Account/BooksCollection" className="link-highlight">BooksCollection</Link>
               </li>
             </ul>
           </div>

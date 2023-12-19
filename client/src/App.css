@@ -7,15 +7,15 @@
   background: rgb(0, 0, 0);
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.7511379551820728) 0%,
-    rgba(36, 36, 36, 0.7371323529411764) 100%
+    rgba(0, 0, 0, 0.80) 0%,
+    rgba(36, 36, 36, 0.60) 100%
   );
 }
 
 .card-item {
   background-color: #fff;
   width: 100%;
-  border: 2px solid black;
+  border: 3px solid black;
   height: 100%;
   max-width: 236.8px;
   max-height: 499.2px;
@@ -106,4 +106,13 @@
   height: 100%;
   display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+.header {
+  font-size: 28px;
+}
+
+.link-highlight:hover {
+  color: #F8B32E;
 }

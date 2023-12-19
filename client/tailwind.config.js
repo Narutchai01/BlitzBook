@@ -30,11 +30,13 @@ export default {
         'crime' : "url('/src/assets/images/crime.png')",
         'Fantasy' : "url('/src/assets/images/Fantasy.png')",
         'Horror' : "url('/src/assets/images/Horror.png')",
+        'ScienceFiction' : "url('/src/assets/images/ScienceFiction.png')",
         'Superhero' : "url('/src/assets/images/Superhero.png')",
       }),
       fontFamily: {
         HomeHeader: ['KidsMagazine'],
         fontNav: ['IMPACT'],
+        header: ['FRAHV'],
       },
     },
   },

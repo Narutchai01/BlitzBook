@@ -119,7 +119,7 @@ useEffect(() => {
             {checkBoxCategory}
           </div>
         </div>
-        <div className="grid md:grid-cols-5 gap-7 mb-10 justify-center">
+        <div className="grid md:grid-cols-4 gap-7 mb-10 justify-center">
           <Carditem data={filteredBooks} />
         </div>
       </div>

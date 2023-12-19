@@ -13,6 +13,13 @@
 @font-face {
   font-family: "Impact Regular";
   src: local("Impact Regular"),
-    url("./assets/font/impact/IMPACT.TFF") format("truetype");
+    url("./assets/font/impact/IMPACT.TTF") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Franklin Gothic Heavy";
+  src: local("Franklin Gothic Heavy"),
+    url("./assets/font/FranklinGothic/FRAHV.TTF") format("truetype");
   font-weight: bold;
 }
