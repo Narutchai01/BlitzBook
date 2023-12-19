@@ -79,7 +79,7 @@ const LanddingPage = () => {
               <Link to="/ShoppingPage/bestsaler">SEE ALL</Link>
             </h1>
           </div>
-          <div className="grid md:grid-cols-5 gap-10 justify-center">
+          <div className="grid md:grid-cols-5 gap-20 justify-center">
             <Carditem data={dataBestSaler?.slice(0, 5)} />
           </div>
 
