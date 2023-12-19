@@ -108,7 +108,7 @@ useEffect(() => {
       </div>
       <div className="grid md:grid-cols-[360px_1fr] border-b-2 border-black h-auto my-10 bg-bgcolor">
         <div className="h-full">
-          <div className="md:h-[423px] bg-yellow md:w-[288px] border-black border-4 sticky z-10 top-1">
+          <div className="h-auto bg-yellow md:w-[288px] border-black border-4 sticky z-10 top-1">
             <div>
               <h1 className="text-3xl text-center font-bold text-black my-5">
                 Publisher

@@ -65,7 +65,7 @@ const Nav = () => {
       <>
         {role === "admin" ? (
           <div className="flex gap-5 h-full items-center">
-            <Link to="/admin/dashboard" className="icon">
+            <Link to="/admin/managementBooks" className="icon">
               <div className="flex flex-col items-center">
                 <FaUserLarge />
                 <p>Admin</p>

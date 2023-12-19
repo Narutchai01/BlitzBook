@@ -35,8 +35,8 @@ const LanddingPage = () => {
       {/* header */}
       <div className="bg-hero-pattern bg-fixed h-[640px] bg-cover bg-center bg-no-repeat">
         <div className="OverLay">
-          <h1 className="md:text-5xl font-HomeHeader text-bold text-white text-lg">
-            GET YOUR FAVORITE COMICS
+          <h1 className="md:text-2xl font-HomeHeader text-bold text-white text-lg uppercase ">
+            We have all comic from all of your favorite publishers in a form of e-book
           </h1>
         </div>
       </div>
