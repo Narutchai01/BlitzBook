@@ -8,22 +8,23 @@ import { TiSocialTwitter } from "react-icons/ti";
 const Footer = () => {
   return (
     <>
-      <footer className=" bg-bgcolor">
-        <div className="container mx-auto my-auto py-[159px]">
-          <div className="flex md:justify-between flex-col items-center h-full md:flex-row">
+      <footer className="bg-white p-[12px] border-t-4 border-black">
+        <div className="bg-bgcolor">
+          <div className="container mx-auto my-auto py-[64px]">
+          <div className="flex md:justify-between flex-col items-start h-full md:flex-row">
             <div className="md:w-[300px] gap-5 flex flex-col ">
-              <h1 className=" md:text-5xl text-primary font-bold font-fontNav w-full flex justify-center text-3xl">
+              <h1 className=" md:text-5xl text-primary font-bold font-fontNav w-full flex text-3xl">
                 BlitzBook
               </h1>
-              <p className="w-full text-lg font-medium px-10 text-center">
+              <p className="w-full text-lg font-medium">
                 We have the largest and most comprehensive selection of comics
                 and graphic novels from all your favorite publishers in a form
                 of ebook.
               </p>
             </div>
-            <div className="md:w-[360px] flex flex-col w-full">
+            <div className="md:w-[360px] flex flex-col w-full gap-5">
               <h1 className="text-primary text-2xl font-bold md:text-left text-center">Browse</h1>
-              <div className="grid grid-cols-2 md:text-lg gap-1 font-medium w-full md:text-start text-center">
+              <div className="grid grid-cols-2 md:text-lg gap-1 font-medium md:text-start text-center">
                 <ul className="">
                   <li>
                     <Link>Home</Link>
@@ -41,7 +42,7 @@ const Footer = () => {
                     <Link>Publisher</Link>
                   </li>
                 </ul>
-                <ul className="w-full">
+                <ul className="">
                   <li>
                     <Link>Variants</Link>
                   </li>
@@ -60,10 +61,10 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="items-center flex flex-col">
+            <div className="flex flex-col gap-5">
               <h1 className="text-primary text-2xl font-bold">Contact</h1>
-              <div className="text-xl">
-                <div className="contact-footer ">
+              <div className="md:text-lg font-medium">
+                <div className="contact-footer">
                   <FiMapPin />
                   Home
                 </div>
@@ -75,17 +76,18 @@ const Footer = () => {
                   <MdOutlinePhone />
                   1234567890
                 </div>
-                <div className="contact-footer gap-5 text-xl">
+              </div>
+              <div className="contact-footer gap-5 text-3xl">
                   <FaFacebook />
                   <FaInstagram />
                   <TiSocialTwitter />
                 </div>
-              </div>
             </div>
           </div>
         </div>
-        <div className="bg-secondary mb-5 w-full md:h-[36px] flex md:justify-center items-center h-auto ">
-          <p className="text-center md:text-lg font-medium">
+        </div>
+        <div className="bg-secondary w-full md:h-[36px] flex md:justify-center items-center h-auto ">
+          <p className="text-center md:text-l font-medium">
             CoppyRight ©2023 BlitzBook. All Rights Reserved.
           </p>
         </div>
